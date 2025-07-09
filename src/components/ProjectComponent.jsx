@@ -29,7 +29,7 @@ const ProjectComponent = ({ title, from, to, gif, summary, link, tags = [] }) =>
           className="w-full md:w-166 view-c object-cover transform scale-105 hover:scale-100 transition-transform duration-300 ease-in-out"
         />
       </a>
-      <button className='bg-dark w-full rounded-sm text-light font-figtree text-sm py-1 mt-2 block md:hidden'>View Project</button>
+      <a href={link} className='w-full block md:hidden'><button className='bg-dark w-full rounded-sm text-light font-figtree text-sm py-1 mt-2 block md:hidden'>View Project</button></a>
     </div>
   );
 };

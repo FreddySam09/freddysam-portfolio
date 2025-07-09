@@ -12,6 +12,8 @@ import mascotGif from "./assets/gifs/mascot-active.gif";
 import AquaVisionGif from "./assets/gifs/aquavision-gif.gif";
 import ClickShieldGif from "./assets/gifs/clickshield-gif.gif";
 import AboutMe from "./pages/AboutMe";
+import DigiBridgePage from "./pages/DigiBridgePage";
+import AquaVisionPage from "./pages/AquaVisionPage";
 
 export default function App() {
   const [isDiceOpen, setIsDiceOpen] = useState(false);
@@ -134,6 +136,8 @@ export default function App() {
             }
           />
           <Route path="/aboutme" element={<AboutMe />} />
+          <Route path="/digibridge" element={<DigiBridgePage />} />
+          <Route path="/aquavision" element={<AquaVisionPage />} />
         </Routes>
       </div>
     </Router>
