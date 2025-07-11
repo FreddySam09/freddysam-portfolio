@@ -12,6 +12,11 @@ import mobileHead from '../assets/img/digibridge/mobile-head.png';
 import mobile1 from '../assets/img/digibridge/mobile-1.png';
 import mobile2 from '../assets/img/digibridge/mobile-2.png';
 import Navbar from '../components/Navbar';
+import game1 from '../assets/img/digibridge/game-1.gif'
+import game2 from '../assets/img/digibridge/game-2.gif'
+import game3 from '../assets/img/digibridge/game-3.gif'
+import hub from '../assets/img/digibridge/hub.png'
+import sihfinal from '../assets/img/digibridge/sih-final.jpg'
 
 
 const DigiBridgePage = () => {
@@ -129,7 +134,7 @@ const DigiBridgePage = () => {
 
       {/* Problem Section */}
       <section section id="problem-section" className="bg-black text-white py-20 px-4 md:px-12 lg:px-32 space-y-16 w-screen items-center">
-        <h2 className="text-2xl md:text-3xl font-semibold">1 The Problem with Education in India</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold">The Problem with Education in India</h2>
 
         <div className="space-y-20">
           {/* Problem 1 */}
@@ -162,7 +167,7 @@ const DigiBridgePage = () => {
       </section>
       {/* Solution Section */}
       <section className="bg-white text-center py-20 px-4 md:px-12 lg:px-32 space-y-8">
-        <h2 className="text-2xl md:text-3xl font-semibold">2 Our Solution: DigiBridge</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold">Our Solution: DigiBridge</h2>
         <img src={sol1} alt="Solution Logo" className="mx-auto md:max-w-md -mt-12" />
         <p className="text-base max-w-2xl mx-auto">
           An Innovative <strong>e-learning platform</strong> designed to <strong>bridge the digital divide</strong> in education,
@@ -173,7 +178,7 @@ const DigiBridgePage = () => {
 
       {/* AI Section */}
       <section className="bg-white py-20 px-4 md:px-12 lg:px-32 space-y-12">
-        <h2 className="text-2xl md:text-3xl font-bold">3 AI – Based Early Warning System</h2>
+        <h2 className="text-2xl md:text-3xl font-bold">AI – Based Early Warning System</h2>
         <div className="flex flex-col lg:flex-row gap-12 justify-between items-start">
           {/* Left Column - Points */}
           <div className="space-y-6 max-w-xl">
@@ -212,7 +217,7 @@ const DigiBridgePage = () => {
 
       {/* Features Section */}
       <section className="bg-white py-20 px-4 md:px-12 lg:px-32 -mt-0 md:-mt-12">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10">4 Application Features</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10">Application Features</h2>
         <img src={desktopHead} alt="Desktop App" className="w-screen -mt-18 md:-mt-46" />
 
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm text-white">
@@ -315,6 +320,115 @@ const DigiBridgePage = () => {
             ))}
           </div>
         </div>
+        {/* Interactive Learning Section */}
+        <section className="bg-white py-16 px-4 md:px-12 lg:px-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start md:-ml-24">
+            {/* Left GIFs */}
+            <div className="space-y-6">
+              <img src={game1} alt="Game 1" className="rounded-lg w-full shadow-md" />
+              <img src={game2} alt="Game 2" className="rounded-lg w-full shadow-md" />
+              <img src={game3} alt="Game 3" className="rounded-lg w-full shadow-md" />
+            </div>
+
+            {/* Right Content */}
+            <div className="space-y-8">
+              <h2 className="text-2xl md:text-3xl font-bold md:mt-26">Interactive Learning</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 gap-x-36">
+                {[
+                  {
+                    title: "Gamified Learning",
+                    desc: "Story Mode Gaming Modules, and Dynamic Gamified Quizzes prompt an Interactive Application of concepts learnt.",
+                  },
+                  {
+                    title: "Video Quizzes",
+                    desc: "Video modules come alongside interactive quizzes that keep the learner engaged throughout the runtime.",
+                  },
+                  {
+                    title: "Dissectable 3D Models",
+                    desc: "Interactive dissection of 3D models results in easier understanding of complex anatomy.",
+                  },
+                  {
+                    title: "Specific Games",
+                    desc: "Creative topic-based games tailored for better understanding and concept clarity.",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-[#f3f0fa] border-l-4 border-[#5E4B8B] p-4 md:w-56 rounded-lg text-sm shadow-sm"
+                  >
+                    <h4 className="font-semibold text-[#5E4B8B] mb-1">{item.title}</h4>
+                    <p className="text-gray-700">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Community Hubs Section */}
+        <section className="bg-white py-16 px-4 md:px-12 lg:px-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+            {/* Left Text */}
+            <div className="space-y-4">
+              <h2 className="text-2xl md:text-3xl font-bold">Community Learning Hubs</h2>
+              <p className="text-base text-gray-800">
+                <strong>Utilising Refurbished Shipping Containers</strong> to build accessible learning spaces.
+              </p>
+              <p className="text-base text-gray-800">
+                <strong>Equipped with PCs</strong> and all digital learning essentials.
+              </p>
+              <p className="text-base text-gray-800">
+                Brings education to the underserved, especially those who <strong>lack the facilities</strong>.
+              </p>
+            </div>
+
+            {/* Right Image */}
+            <img
+              src={hub}
+              alt="Learning Hub"
+              className="md:w-172 w-full max-w-md mx-auto rounded-xl"
+            />
+          </div>
+        </section>
+
+        {/* SIH Team Section */}
+        <section className="bg-white py-20 px-4 md:px-12 lg:px-32 text-center">
+          <div className="mx-auto w-full max-w-3xl px-2">
+            <img
+              src={sihfinal}
+              alt="SIH Final Team"
+              className="w-full rounded-lg shadow-md"
+            />
+          </div>
+          <h3 className="text-base md:text-lg font-semibold mt-6 text-gray-800">
+            The Team at the <br />
+            <span className="text-xl md:text-2xl font-bold text-black">
+              Smart India Hackathon 2024 Final
+            </span>
+          </h3>
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-white border-t py-12 px-4 md:px-12 lg:px-32 text-center">
+          <p className="text-sm md:text-base font-medium text-gray-500 mb-2">Done Reading?</p>
+          <h3 className="text-lg md:text-xl font-extrabold mb-6 text-black">
+            Check out my other projects
+          </h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="/aquavision"
+              className="bg-black text-white px-5 py-2 rounded-md text-sm md:text-base hover:bg-gray-800 transition"
+            >
+              AquaVision
+            </a>
+            <a
+              href="/clickshield"
+              className="bg-black text-white px-5 py-2 rounded-md text-sm md:text-base hover:bg-gray-800 transition"
+            >
+              ClickShield
+            </a>
+          </div>
+        </section>
 
       </section>
     </div>
