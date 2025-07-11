@@ -12,9 +12,9 @@ import mobileHead from '../assets/img/digibridge/mobile-head.png';
 import mobile1 from '../assets/img/digibridge/mobile-1.png';
 import mobile2 from '../assets/img/digibridge/mobile-2.png';
 import Navbar from '../components/Navbar';
-import game1 from '../assets/img/digibridge/game-1.gif'
-import game2 from '../assets/img/digibridge/game-2.gif'
-import game3 from '../assets/img/digibridge/game-3.gif'
+// import game1 from '../assets/img/digibridge/game-1.gif'
+// import game2 from '../assets/img/digibridge/game-2.gif'
+// import game3 from '../assets/img/digibridge/game-3.gif'
 import hub from '../assets/img/digibridge/hub.png'
 import sihfinal from '../assets/img/digibridge/sih-final.jpg'
 
@@ -324,11 +324,11 @@ const DigiBridgePage = () => {
         <section className="bg-white py-16 px-4 md:px-12 lg:px-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start md:-ml-24">
             {/* Left GIFs */}
-            <div className="space-y-6">
+            {/* <div className="space-y-6">
               <img src={game1} alt="Game 1" className="rounded-lg w-full shadow-md" />
               <img src={game2} alt="Game 2" className="rounded-lg w-full shadow-md" />
               <img src={game3} alt="Game 3" className="rounded-lg w-full shadow-md" />
-            </div>
+            </div> */}
 
             {/* Right Content */}
             <div className="space-y-8">
