@@ -12,9 +12,9 @@ import mobileHead from '../assets/img/digibridge/mobile-head.png';
 import mobile1 from '../assets/img/digibridge/mobile-1.png';
 import mobile2 from '../assets/img/digibridge/mobile-2.png';
 import Navbar from '../components/Navbar';
-import game1 from '../assets/img/digibridge/game-1.png'
-import game2 from '../assets/img/digibridge/game-2.png'
-import game3 from '../assets/img/digibridge/game-3.png'
+import game1 from '../assets/img/digibridge/games-1.png'
+import game2 from '../assets/img/digibridge/games-2.png'
+import game3 from '../assets/img/digibridge/games-3.png'
 import hub from '../assets/img/digibridge/hub.png'
 import sihfinal from '../assets/img/digibridge/sih-final.jpg'
 
