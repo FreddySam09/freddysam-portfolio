@@ -1,9 +1,8 @@
 import React from 'react';
-import heroImg from '../assets/img/aquavision/hero-img.png';
-import kuruk from '../assets/img/aquavision/kuruk.png'
+import heroImg from '../assets/img/clickshield/hero-img.png';
 
 
-const AquaVisionPage = () => {
+const ClickshieldPage = () => {
   return (
     <>
      <a
@@ -28,14 +27,11 @@ const AquaVisionPage = () => {
   <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
     {/* Left - Title, Description, and Image */}
     <div className="lg:col-span-2 space-y-6">
-      <div className='flex flex-row gap-38'>
-      <p className="uppercase text-sm font-semibold tracking-widest text-dark">
-        AQUAVISION
+      <p className="uppercase text-sm font-semibold tracking-widest text-blue-600">
+        Clickshield
       </p>
-      <img src={kuruk} alt="" className='block md:hidden w-21 -mt-5'/>
-      </div>
       <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-        Ocean Pollution Detection & Collection System
+        Optical Underwater Communication
       </h1>
       <button className="bg-gray-200 text-gray-800 px-4 py-2 text-sm font-medium rounded-md w-fit">
         Project Showcase
@@ -43,7 +39,7 @@ const AquaVisionPage = () => {
       
       <img
         src={heroImg}
-        alt="AquaVision Hero"
+        alt="Clickshield Hero"
         className="w-full max-w-xl"
       />
     </div>
@@ -51,21 +47,19 @@ const AquaVisionPage = () => {
     {/* Right - Summary / Team / Skills */}
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-6 text-sm">
-        <img src={kuruk} alt="" className='hidden md:block'/>
-        <br className='hidden md:block'/>
         <div>
           <h3 className="font-semibold mb-1">ROLE</h3>
-          <p className="text-gray-600">Developer<br />Dashboard Engineer<br />Prototype Testing</p>
+          <p className="text-gray-600">Simulation<br />Research</p>
         </div>
         <div>
           <h3 className="font-semibold mb-1">SKILLS</h3>
-          <p className="text-gray-600">Full Stack Dev<br />Machine Learning Integration <br />3D Modelling & Simulation</p>
+          <p className="text-gray-600">OptiSystem<br />Data Analysis</p>
         </div>
       </div>
       <div>
         <h3 className="font-semibold mb-1 text-sm">TEAMMATES</h3>
         <p className="text-gray-600 text-sm leading-relaxed">
-          Raghul D, Udaya M R<br />Guided by Sarojani Maurya (Scientist at NIOT)
+          Freddy Sam, Raghul D, Udaya M R<br />Guided by Sarojani (NIOT)
         </p>
       </div>
     </div>
@@ -79,18 +73,10 @@ const AquaVisionPage = () => {
           {/* PDF Viewer */}
           <div className="w-full h-[500px] md:h-[290px]">
             <iframe
-              src="/pdfs/aquavision-ppt.pdf"
+              src="/pdfs/Clickshield-ppt.pdf"
               className="w-full h-full border rounded-xl shadow-md"
-              title="AquaVision PDF"
+              title="Clickshield PDF"
             />
-          </div>
-
-          {/* Video Player */}
-          <div className="w-full aspect-video rounded-xl overflow-hidden shadow-md">
-            <video controls className="w-full h-full object-cover rounded-xl">
-              <source src="/videos/avdemo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </section>
@@ -99,4 +85,4 @@ const AquaVisionPage = () => {
   );
 };
 
-export default AquaVisionPage;
+export default ClickshieldPage;

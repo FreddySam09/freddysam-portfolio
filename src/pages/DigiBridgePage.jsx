@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import heroImg from '../assets/img/digibridge/hero-img.png';
 import sihImg from '../assets/img/digibridge/sih.png';
 import prb1 from '../assets/img/digibridge/prb-1.png';
@@ -136,7 +137,7 @@ const DigiBridgePage = () => {
         <div className="space-y-20">
           {/* Problem 1 */}
           <div className="text-center space-y-6">
-            <img src={prb1} alt="Problem 1" className="mx-auto max-w-xs" />
+            <img src={prb1} alt="Problem 1" className="mx-auto max-w-xs animate-pulse" />
             <p className="text-base max-w-xl mx-auto">
               Despite The Government building more schools than ever, The sheer amount of rural
               communities that lack access to them are evergrowing.
@@ -145,7 +146,7 @@ const DigiBridgePage = () => {
 
           {/* Problem 2 */}
           <div className="flex flex-col md:flex-row justify-center items-center gap-10 text-center md:text-left">
-            <img src={prb2} alt="Problem 2" className="w-72" />
+            <img src={prb2} alt="Problem 2" className="w-72 animate-pulse" />
             <p className="text-base max-w-md">
               Financial Constraints require money for families, which results in opting of child labour
               over pursuing education at unreachable distances.
@@ -154,7 +155,7 @@ const DigiBridgePage = () => {
 
           {/* Problem 3 */}
           <div className="text-center space-y-6">
-            <img src={prb3} alt="Problem 3" className="mx-auto max-w-xs" />
+            <img src={prb3} alt="Problem 3" className="mx-auto max-w-xs animate-pulse" />
             <p className="text-base max-w-xl mx-auto">
               On top of that, The digitalization of education, affects the ones that are unconnected to the facilities
               severely, resulting in the manifestation of Digital Divide in Education.
@@ -165,7 +166,15 @@ const DigiBridgePage = () => {
       {/* Solution Section */}
       <section className="bg-white text-center py-20 px-4 md:px-12 lg:px-32 space-y-8">
         <h2 className="text-2xl md:text-3xl font-semibold">Our Solution: DigiBridge</h2>
-        <img src={sol1} alt="Solution Logo" className="mx-auto md:max-w-md -mt-12" />
+        <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{
+                  duration: 0.4,
+                  scale: { type: "spring", visualDuration: 0.3, bounce: 0.2 },
+                  }}
+                >
+        <img src={sol1} alt="Solution Logo" className="mx-auto md:max-w-md -mt-12" /></motion.div>
         <p className="text-base max-w-2xl mx-auto">
           An Innovative <strong>e-learning platform</strong> designed to <strong>bridge the digital divide</strong> in education,
           providing equitable access to quality learning resources. It integrates personalized support, community engagement,

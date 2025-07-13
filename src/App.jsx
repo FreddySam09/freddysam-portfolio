@@ -9,6 +9,7 @@ import ProjectComponent from "./components/ProjectComponent";
 import DigiBridgeGif from "./assets/gifs/digibridge-gif.gif";
 import CustomCursor from "./components/CustomCursor";
 import mascotGif from "./assets/gifs/mascot-active.gif";
+import mascot from "./assets/img/mascot.png"
 import AquaVisionGif from "./assets/gifs/aquavision-gif.gif";
 import ClickShieldGif from "./assets/gifs/clickshield-gif.gif";
 import AboutMe from "./pages/AboutMe";
@@ -133,7 +134,19 @@ export default function App() {
                     />
                   </div>
                 </div>
-              </div>
+                <div className="w-screen h-[1px] bg-gray-300 border-1 border-gray-200 mb-6"></div>
+                <div className="flex flex-row md:items-start items-center md:justify-start justify-center md:text-start text-center">
+                <img src={mascot} alt="mascot" className="w-18 md:w-21 md:ml-32" />
+                <div className="md:text-start text-center md:justify-start justify-center md:ml-2 mt-4 md:mt-8 text-dark text-4xl md:text-5xl font-sue">
+                  Wanna connect<span className="text-niceorange"> ???</span>
+                </div>
+                </div>
+                <div className="flex flex-row md:items-start items-center md:justify-start justify-center md:text-start text-center md:ml-56">
+                <div className="md:text-lg text-md font-figtree text-gray-700 link-c">
+                   <a href="tel:+919360126618">+91 93601 26618</a> <br /> <a href="mailto:freddysamv@gmail.com" className="link-c"><span className="text-sm md:text-md -mt-8 underline underline-offset-4 decoration-dotted decoration-1 link-c">freddysamv@gmail.com</span></a>
+                </div>
+                </div>
+                </div>
             }
           />
           <Route path="/aboutme" element={<AboutPage />} />

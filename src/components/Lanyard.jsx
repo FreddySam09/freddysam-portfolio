@@ -43,21 +43,30 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
 
 function Particles({ cardRef }) {
   const particlesRef = useRef();
-  const particleCount = 25;
+  const particleCount = 20;
+  const minDistanceFromCard = 3; // Minimum distance from card center
 
   const particlesData = useMemo(() => {
     const data = [];
+    const cardCenter = new THREE.Vector3(2, 0, 0); // Card's approximate center
     for (let i = 0; i < particleCount; i++) {
-      const radius = 4 + Math.random() * 1.5; // Radius range for wider spread
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.random() * Math.PI;
-      const position = [
-        radius * Math.sin(phi) * Math.cos(theta),
-        radius * Math.cos(phi),
-        radius * Math.sin(phi) * Math.sin(theta),
-      ];
-      const size = i < 190 ? 0.08 + Math.random() * 0.2 : 0.35 + Math.random() * 0.2;
-      data.push({ position, angle: theta, radius, size });
+      let position, theta, radiusX, radiusY, radiusZ;
+      do {
+        // Ellipsoidal distribution: wide in X/Z, narrow in Y
+        radiusX = 6 + Math.random() * 2; // 6 to 8 units for X
+        radiusY = 3 + Math.random() * 1; // 2 to 4 units for Y
+        radiusZ = 6 + Math.random() * 2; // 6 to 8 units for Z
+        theta = Math.random() * Math.PI * 2;
+        const phi = Math.random() * Math.PI;
+        position = new THREE.Vector3(
+          radiusX * Math.sin(phi) * Math.cos(theta),
+          radiusY * Math.cos(phi),
+          radiusZ * Math.sin(phi) * Math.sin(theta)
+        );
+      } while (position.distanceTo(cardCenter) < minDistanceFromCard); // Ensure not too close to card
+
+      const size = i < 5 ? 0.06 + Math.random() * 0.1 : 0.2 + Math.random() * 0.1; // Slightly smaller sizes
+      data.push({ position, angle: theta, radiusX, radiusY, radiusZ, size });
     }
     return data;
   }, []);
@@ -84,7 +93,7 @@ function Particles({ cardRef }) {
     return particlesData.map((particle) => createSphereGeometry(particle.size));
   }, [particlesData]);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     const group = particlesRef.current;
     const speed = cardRef.current
       ? Math.sqrt(
@@ -96,25 +105,35 @@ function Particles({ cardRef }) {
 
     particlesData.forEach((particle, index) => {
       const mesh = group.children[index];
-      particle.angle += speed > 0.1 ? cardRef.current.linvel().y * 0.001 : 0.005; // Slower movement
-      const { radius, angle } = particle;
-      const phi = Math.acos(particle.position[1] / radius);
-      particle.position[0] = radius * Math.sin(phi) * Math.cos(angle);
-      particle.position[1] = radius * Math.cos(phi);
-      particle.position[2] = radius * Math.sin(phi) * Math.sin(angle);
-      mesh.position.set(
-        particle.position[0],
-        particle.position[1] - 0.6, // Fixed position with y-offset for screen center
-        particle.position[2]
+      // Slower and smoother response to drag
+      const dragInfluence = speed > 0.1 ? Math.min(speed * 0.0005, 0.005) : 0.002; // Reduced multiplier
+      particle.angle += dragInfluence;
+
+      // Update position using ellipsoidal coordinates
+      const phi = Math.acos(particle.position.y / particle.radiusY);
+      particle.position.x = particle.radiusX * Math.sin(phi) * Math.cos(particle.angle);
+      particle.position.y = particle.radiusY * Math.cos(phi);
+      particle.position.z = particle.radiusZ * Math.sin(phi) * Math.sin(particle.angle);
+
+      // Smoothly lerp to new position
+      mesh.position.lerp(
+        new THREE.Vector3(
+          particle.position.x,
+          particle.position.y - 0.6, // Keep y-offset
+          particle.position.z
+        ),
+        0.1 // Smoother transition
       );
-      mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.002;
-      mesh.rotation.x += 0.01;
-      mesh.rotation.y += 0.01;
+
+      // Gentle floating animation
+      mesh.position.y += Math.sin(Date.now() * 0.0005 + index) * 0.001; // Slower float
+      mesh.rotation.x += 0.005; // Slower rotation
+      mesh.rotation.y += 0.005;
     });
   });
 
   return (
-    <group ref={particlesRef} position={[0, 4, 0]}> {/* Fixed position near screen center */}
+    <group ref={particlesRef} position={[0, 4, 0]}>
       {particlesData.map((particle, index) => (
         <mesh key={index} position={particle.position} geometry={geometries[index]}>
           <meshStandardMaterial
