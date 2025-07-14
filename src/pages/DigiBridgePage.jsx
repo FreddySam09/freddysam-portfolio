@@ -15,9 +15,9 @@ import mobile2 from '../assets/img/digibridge/mobile-2.png';
 import Navbar from '../components/Navbar';
 import hub from '../assets/img/digibridge/hub.png'
 import sihfinal from '../assets/img/digibridge/sih-final.jpg'
-import game1 from '/game-1.png'
-import game2 from '/game-2.png'
-import game3 from '/game-3.png'
+import game1 from '../assets/img/digibridge/game-1.gif'
+import game2 from '../assets/img/digibridge/game-2.gif'
+import game3 from '../assets/img/digibridge/game-3.gif'
 
 
 const DigiBridgePage = () => {
