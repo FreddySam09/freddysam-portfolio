@@ -400,6 +400,29 @@ const DigiBridgePage = () => {
           </div>
         </section>
 
+        {/* PDF and Video Section */}
+      <section className="py-20 px-4 md:px-12 lg:px-24 bg-white -mt-32">
+        <h1 className='text-center justify-center mb-6 text-dark font-semibold text-lg'>Project Material and Video</h1>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start max-w-7xl mx-auto">
+          {/* PDF Viewer */}
+          <div className="md:w-lg w-full h-[500px] md:h-[290px] md:-ml-24">
+            <iframe
+              src="/pdfs/db-ppt.pdf"
+              className="w-full h-full border rounded-xl shadow-md"
+              title="Digibridge PDF"
+            />
+          </div>
+
+          {/* Video Player */}
+          <div className="w-full md:w-lg aspect-video rounded-xl overflow-hidden shadow-md">
+            <video controls className="w-full h-full object-cover rounded-xl">
+              <source src="/videos/db-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
         {/* SIH Team Section */}
         <section className="bg-white py-20 px-4 md:px-12 lg:px-32 text-center">
           <div className="mx-auto w-full max-w-3xl px-2">
