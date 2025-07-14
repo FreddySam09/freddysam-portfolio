@@ -15,6 +15,9 @@ import mobile2 from '../assets/img/digibridge/mobile-2.png';
 import Navbar from '../components/Navbar';
 import hub from '../assets/img/digibridge/hub.png'
 import sihfinal from '../assets/img/digibridge/sih-final.jpg'
+import game1 from '/game-1.png'
+import game2 from '/game-2.png'
+import game3 from '/game-3.png'
 
 
 const DigiBridgePage = () => {
@@ -331,9 +334,9 @@ const DigiBridgePage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start md:-ml-24">
             {/* Left GIFs */}
             <div className="space-y-6">
-              <img src='./game-1.png' alt="Game 1" className="rounded-lg w-full shadow-md" />
-              <img src='./game-2.png' alt="Game 2" className="rounded-lg w-full shadow-md" />
-              <img src='./game-3.png' alt="Game 3" className="rounded-lg w-full shadow-md" />
+              <img src={game1} alt="Game 1" className="rounded-lg w-full shadow-md" />
+              <img src={game2} alt="Game 2" className="rounded-lg w-full shadow-md" />
+              <img src={game3} alt="Game 3" className="rounded-lg w-full shadow-md" />
             </div>
 
             {/* Right Content */}
