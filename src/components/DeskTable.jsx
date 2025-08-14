@@ -235,7 +235,7 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
             <a href="https://www.instagram.com/sam.fredx/">
               <InstaLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transition hover:text-niceorange hover:rotate-2" />
             </a>
-            <a href="https://www.linkedin.com/in/freddy-samjacob-2a3809373/">
+            <a href="https://www.linkedin.com/in/freddy-samjacob/">
               <LinkedInLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transition hover:text-niceorange hover:rotate-2" />
             </a>
             <a href="mailto:freddysamv@gmail.com">
@@ -252,7 +252,7 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
             </div>
             <div className="hidden md:block relative h-14 w-14 -ml-5 -mr-4 mb-1 z-0 group transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:rotate-2">
               <img src={block} alt="LinkedIn block" className="h-full w-full object-contain" />
-              <a href="https://www.linkedin.com/in/freddy-samjacob-2a3809373/">
+              <a href="https://www.linkedin.com/in/freddy-samjacob/">
                 <LinkedInLogo className="absolute inset-0 m-auto h-7 w-7 transition-colors duration-300 group-hover:text-niceorange" />
               </a>
             </div>

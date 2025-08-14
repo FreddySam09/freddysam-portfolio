@@ -74,7 +74,7 @@ const AquaVision = () => {
                 <div className="col-span-2">
                   <h3 className="font-semibold mb-1 text-sm">TEAMMATES</h3>
                   <p className="text-gray-600 text-sm">
-                    Raghul D, Udaya S R<br />Guided by Sarojani Maurya (Scientist at NIOT)
+                    Raghul D, Udaya M R<br />Guided by Sarojani Maurya (Scientist at NIOT)
                   </p>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const AquaVision = () => {
               <div className="hidden lg:block">
                 <h3 className="font-semibold mb-1 text-sm">TEAMMATES</h3>
                 <p className="text-gray-600 text-sm">
-                  Raghul D, Udaya S R<br />Guided by Sarojani Maurya (Scientist at NIOT)
+                  Raghul D, Udaya M R<br />Guided by Sarojani Maurya (Scientist at NIOT)
                 </p>
               </div>
 
