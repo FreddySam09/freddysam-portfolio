@@ -257,7 +257,7 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
         {/* Social icons (hidden on mobile in table state) */}
         {isNavbarVisible ? (
           <div className="bg-lightgray rounded-md px-1 md:px-4 py-0 md:py-2 flex items-center gap-2 md:gap-3">
-            <a href="https://www.instagram.com/sam.fredx/">
+            <a href="https://github.com/FreddySam09">
               <GithubLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transition hover:text-niceorange hover:rotate-2" />
             </a>
             <a href="https://www.linkedin.com/in/freddy-samjacob/">
@@ -270,8 +270,8 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
         ) : (
           <>
             <div className="hidden md:block relative h-14 w-14 ml-1 md:ml-2 mb-1 z-0 group transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:-rotate-2">
-              <img src={isDarkMode? blockDark : block} alt="Instagram block" className="h-full w-full object-contain" />
-              <a href="https://www.instagram.com/sam.fredx/">
+              <img src={isDarkMode? blockDark : block} alt="Github block" className="h-full w-full object-contain" />
+              <a href="https://github.com/FreddySam09">
                 <GithubLogo className="absolute inset-0 m-auto h-7 w-7 transition-colors duration-300 group-hover:text-niceorange" />
               </a>
             </div>
