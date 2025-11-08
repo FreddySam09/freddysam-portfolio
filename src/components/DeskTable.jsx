@@ -1,9 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import mascotGif from "../assets/gifs/mascot-gif.gif";
 import mascotActiveGif from "../assets/gifs/mascot-active.gif";
+import mascotGifDark from "../assets/gifs/mascot-gif-dark.gif";
+import mascotActiveGifDark from "../assets/gifs/mascot-active-dark.gif";
 import dice from "../assets/img/dice.png";
 import diceHover from "../assets/img/dice-hover.png";
+import diceDark from "../assets/img/dice-dark.png";
+import diceHoverDark from "../assets/img/dice-hover-dark.png";
 import picFrame from "../assets/img/pic-frame.png";
+import picFrameDark from "../assets/img/pic-frame-dark.png";
 import coffee from "../assets/img/coffee.png";
 import coffeeHover from "../assets/img/coffee-hover.png";
 import radio from "../assets/img/radio.png";
@@ -11,14 +16,23 @@ import logo from "../assets/img/logo.png";
 import logoDark from "../assets/img/logo-dark.png";
 import block from "../assets/img/block.png";
 import lamp from "../assets/img/lamp.png";
-import lampOn from "../assets/img/lamp-on.png";
+import lampOn from "../assets/img/lamp-dark.png";
 import music from "../assets/audio/lofi.mp3";
 import InstaLogo from "../assets/icons/insta.svg?react";
 import MailLogo from "../assets/icons/mail.svg?react";
-import LinkedInLogo from "../assets/icons/linkedin.svg?react";
+import LinkedInLogo from "../assets/icons/LinkedInLogo.svg?react";
 import picFrameHover from "../assets/img/pic-frame-hover.png";
+import picFrameHoverDark from "../assets/img/pic-frame-hover-dark.png";
 import frameNav from "../assets/img/frame-nav.png";
+import frameNavDark from "../assets/img/frame-nav-dark.png";
 import MusicNote from "../assets/icons/music.svg?react";
+import { useTheme } from "../context/ThemeContext";
+import logoOrange from "../assets/icon.svg"
+import blockDark from "../assets/img/block-dark.png"
+import coffeeHoverDark from  "../assets/img/coffee-full-dark.png"
+import coffeeDark from  "../assets/img/coffee-dark.png"
+import radioDark from "../assets/img/radio-dark.png"
+
 
 export default function DeskTable({ onDiceClick, isNavbarVisible }) {
   const [isLampOn, setIsLampOn] = useState(false);
@@ -30,7 +44,12 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
   const audioRef = useRef(null);
   const [isFrameHovered, setIsFrameHovered] = useState(false);
 
-  const toggleLamp = () => setIsLampOn(!isLampOn);
+  const { isDarkMode, toggleTheme } = useTheme();
+
+  const toggleLamp = () => {
+    toggleTheme(); // ThemeContext handles .dark-theme on <html>
+    setIsLampOn((prev) => !prev);
+  };
 
   const toggleMusic = () => {
     if (!audioRef.current) return;
@@ -55,13 +74,19 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
     <>
     <div className={`transition-all duration-300 ease-in-out ${
       isNavbarVisible 
-        ? "fixed top-0 left-0 w-full bg-gray-100 h-12 md:h-16 flex items-center justify-between px-4 md:px-10 z-[60]" 
+        ? "fixed top-0 left-0 w-full bg-gray-100 dark:bg-[#141414] h-12 md:h-16 flex items-center justify-between px-4 md:px-10 z-[60] dark:border-gray-800" 
         : "relative -mt-2 flex items-end justify-center"
     } font-sueellen`}>
       {/* Logo + Name + Mascot */}
       <div className="flex items-center gap-2 md:gap-3 ml-2 md:ml-0">
         <img
-          src={isNavbarVisible ? logoDark : logo}
+          src={
+                isDarkMode
+                  ? logoOrange 
+                  : isNavbarVisible
+                  ? logoDark   
+                  : logo       
+              }
           alt="logo"
           className={`transition-all duration-700 ${
             isNavbarVisible ? "h-7 w-7 md:h-10 md:w-10" : "h-[calc(10vw+20px)] w-[calc(10vw+20px)] md:h-16 md:w-16 mb-0"
@@ -80,15 +105,15 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
           <div
             className={`${
               isMascotHovered ? "block scale-110" : "hidden"
-            } absolute inset-0 rounded-full ring-2 ring-[#ff7f50] ring-offset-2 transition-all duration-200 ease-in-out z-[60]`}
+            } absolute inset-0  transition-all duration-200 ease-in-out z-[60]`}
           />
           {isMascotHovered && (
-            <div className="absolute -top-8 md:-top-10 left-2/3 -translate-x-1/2 text-dark text-xs md:text-sm font-sue text-center whitespace-nowrap z-[60] rotate-6">
-              Hey there! I’m your little buddy 🐾
+            <div className="absolute -top-8 md:-top-10 left-2/3 -translate-x-1/2 text-dark text-xs md:text-sm font-figtree text-center whitespace-nowrap z-[60] bg-lightgray py-1 px-2 rounded-sm border-1 border-gray-400">
+              Little Buddy
             </div>
           )}
           <img
-            src={isMascotHovered ? mascotActiveGif : mascotGif}
+            src={isDarkMode ? (isMascotHovered ? mascotActiveGifDark : mascotGifDark) : (isMascotHovered ? mascotActiveGif : mascotGif)}
             alt="mascot gif"
             className={`object-contain transition-all duration-700 ease-in-out ${
               isNavbarVisible 
@@ -118,12 +143,12 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
             onKeyDown={(e) => e.key === "Enter" && onDiceClick()}
           >
             {isDiceHovered && (
-              <div className="absolute -top-10 md:-top-14 left-1/4 -translate-x-1/2 text-dark text-xs md:text-sm font-sue text-center whitespace-nowrap z-[20] -rotate-3">
-                Wanna roll me? 🎲
+              <div className="absolute -top-25 -ml-6 md:-top-20 left-1/4 -translate-x-1/2 text-xs md:text-sm  text-center whitespace-nowrap z-[20] bg-lightgray py-1 px-2 rounded-sm border-1 border-gray-400">
+                Roll the Dice
               </div>
             )}
             <img
-              src={isDiceHovered ? diceHover : dice}
+              src={isDarkMode ? (isDiceHovered ? diceHoverDark : diceDark) : (isDiceHovered ? diceHover : dice)}
               alt="dice"
               className={`h-full w-full object-contain transition-all duration-200 ease-in-out ${
                 isDiceHovered ? "scale-150 md:scale-170 -rotate-12 -mt-4 md:-mt-5" : "scale-100"
@@ -141,16 +166,16 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
           onMouseLeave={() => setIsFrameHovered(false)}
         >
           {isFrameHovered && (
-            <div className="absolute -top-8 md:-top-10 left-1/2 -translate-x-1/2 text-dark text-xs md:text-sm font-sue text-center whitespace-nowrap z-30 -rotate-2">
-              Know about me 🧑‍💻
+            <div className="absolute -top-8 md:-top-10 -mt-2 left-1/2 -translate-x-1/2 text-dark text-xs md:text-sm font-figtree text-center whitespace-nowrap z-30  bg-lightgray py-1 px-2 rounded-sm border-1 border-gray-400">
+              About Me
             </div>
           )}
           {!isNavbarVisible && isFrameHovered && (
-            <div className="absolute inset-0 rounded-full bg-orange-300 blur-md opacity-40 z-[-1]" />
+            <div className="absolute inset-0 rounded-full" />
           )}
           <a href="/aboutme">
             <img
-              src={isNavbarVisible ? frameNav : (isFrameHovered ? picFrameHover : picFrame)}
+              src={isNavbarVisible ? (isDarkMode ? frameNavDark : frameNav) : (isDarkMode? (isFrameHovered ? picFrameHoverDark : picFrameDark) :  (isFrameHovered ? picFrameHover : picFrame))}
               alt="frame"
               className={`h-full w-full object-contain transition-all duration-300 ease-in-out ${
                 isFrameHovered ? "scale-110 rotate-6 mb-2 md:mb-4" : "scale-100"
@@ -167,12 +192,12 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
             onMouseLeave={() => setIsCoffeeHovered(false)}
           >
             {isCoffeeHovered && (
-              <div className="absolute -top-9 left-1/2 -translate-x-1/2 text-dark text-sm font-sue text-center whitespace-nowrap z-[20] -rotate-3">
-                Never without a ☕
+              <div className="absolute -top-9 left-1/2 -translate-x-1/2 -mt-6 text-dark text-sm font-figtree text-center whitespace-nowrap z-[20]  bg-lightgray py-1 px-2 rounded-sm border-1 border-gray-400">
+                Take a Sip
               </div>
             )}
             <img
-              src={isCoffeeHovered ? coffeeHover : coffee}
+              src={isDarkMode? (isCoffeeHovered ? coffeeHoverDark : coffeeDark):  (isCoffeeHovered ? coffeeHover : coffee) }
               alt="coffee"
               className={`h-full w-full object-contain transition-all duration-200 ease-in-out ${
                 isCoffeeHovered ? "scale-110 -rotate-12 -mt-4" : "scale-100"
@@ -185,7 +210,7 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
         <div
           className={`relative cursor-pointer transition-all duration-300 ${
             isNavbarVisible ? "h-6 w-6 md:h-10 md:w-10 hidden md:block" : "h-14 w-16 md:h-19 md:w-21 mb-1 hidden md:block"
-          } ${isRadioHovered || isMusicPlaying ? "scale-110" : ""} ${
+          } ${isRadioHovered || isMusicPlaying ? "transition-all scale-110" : ""} ${
             isMusicPlaying ? "animate-bounce" : ""
           }`}
           onMouseEnter={() => setIsRadioHovered(true)}
@@ -197,28 +222,28 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
           onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggleMusic()}
         >
           {isRadioHovered && (
-            <div className="absolute -top-8 md:-top-10 left-1/2 -translate-x-1/2 text-dark text-xs md:text-sm font-sue text-center whitespace-nowrap z-[20] -rotate-2">
-              {isMusicPlaying ? "Click to stop" : "Music is everything to me 🎶"}
+            <div className="absolute -top-8 md:-top-10 left-1/2 -translate-x-1/2 text-dark text-xs md:text-sm font-figtree text-center whitespace-nowrap z-[20]  bg-lightgray py-1 px-2 rounded-sm border-1 border-gray-400">
+              {isMusicPlaying ? "Stop Music" : "Play Music"}
             </div>
           )}
           {isNavbarVisible ? (
             <MusicNote
               className={`thumb-c h-full w-full object-contain transition-all duration-200 ${
-                isMusicPlaying ? "text-niceorange" : "text-black"
+                isDarkMode? (isMusicPlaying ? "text-niceorange" : "text-gray-50"): (isMusicPlaying ? "text-niceorange" : "text-black")
               }`}
             />
           ) : (
             <img
-              src={radio}
+              src={isDarkMode ? radioDark : radio}
               alt="radio"
               className="thumb-c h-full w-full object-contain"
             />
           )}
           {!isNavbarVisible && isMusicPlaying && (
             <div className="absolute -top-1 left-1/2 -translate-x-1/2 flex gap-1 z-20 pointer-events-none">
-              <div className="w-2 h-2 bg-black rounded-full animate-bounce-dot1" />
-              <div className="w-2 h-2 bg-black rounded-full animate-bounce-dot2" />
-              <div className="w-2 h-2 bg-black rounded-full animate-bounce-dot3" />
+              <div className="w-2 h-2 bg-black dark:bg-niceorange rounded-full animate-bounce-dot1" />
+              <div className="w-2 h-2 bg-black dark:bg-niceorange rounded-full animate-bounce-dot2" />
+              <div className="w-2 h-2 bg-black dark:bg-niceorange rounded-full animate-bounce-dot3" />
             </div>
           )}
           {!isNavbarVisible && isMusicPlaying && (
@@ -236,7 +261,7 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
               <InstaLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transition hover:text-niceorange hover:rotate-2" />
             </a>
             <a href="https://www.linkedin.com/in/freddy-samjacob/">
-              <LinkedInLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transition hover:text-niceorange hover:rotate-2" />
+              <LinkedInLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transitiondark:text-white hover:text-niceorange transition-colors duration-300" />
             </a>
             <a href="mailto:freddysamv@gmail.com">
               <MailLogo className="h-5 w-5 md:h-6 md:w-6 hover:scale-120 transition hover:text-niceorange hover:rotate-2" />
@@ -245,19 +270,19 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
         ) : (
           <>
             <div className="hidden md:block relative h-14 w-14 ml-1 md:ml-2 mb-1 z-0 group transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:-rotate-2">
-              <img src={block} alt="Instagram block" className="h-full w-full object-contain" />
+              <img src={isDarkMode? blockDark : block} alt="Instagram block" className="h-full w-full object-contain" />
               <a href="https://www.instagram.com/sam.fredx/">
                 <InstaLogo className="absolute inset-0 m-auto h-7 w-7 transition-colors duration-300 group-hover:text-niceorange" />
               </a>
             </div>
             <div className="hidden md:block relative h-14 w-14 -ml-5 -mr-4 mb-1 z-0 group transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:rotate-2">
-              <img src={block} alt="LinkedIn block" className="h-full w-full object-contain" />
+              <img src={isDarkMode? blockDark : block} alt="LinkedIn block" className="h-full w-full object-contain" />
               <a href="https://www.linkedin.com/in/freddy-samjacob/">
                 <LinkedInLogo className="absolute inset-0 m-auto h-7 w-7 transition-colors duration-300 group-hover:text-niceorange" />
               </a>
             </div>
             <div className="hidden md:block relative h-14 w-14 -ml-22 mb-14 z-0 group transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:-rotate-3">
-              <img src={block} alt="Mail block" className="h-full w-full object-contain" />
+              <img src={isDarkMode? blockDark : block} alt="Mail block" className="h-full w-full object-contain" />
               <a href="mailto:freddysamv@gmail.com">
                 <MailLogo className="absolute inset-0 m-auto h-7 w-7 transition-colors duration-300 group-hover:text-niceorange" />
               </a>
@@ -271,20 +296,24 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
             className="relative h-[calc(20vw+40px)] w-[calc(16vw+32px)] md:h-46 md:w-38 -mb-2 object-contain"
             onClick={toggleLamp}
             role="button"
-            aria-label={isLampOn ? "Turn off lamp" : "Turn on lamp"}
+            aria-label={isDarkMode ? "Turn off lamp" : "Turn on lamp"}
             tabIndex={0}
             onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggleLamp()}
           >
-            {isLampOn && (
+            {/* Lamp glow only when dark mode (lamp on) */}
+            {isDarkMode && (
               <div className="absolute -top-0 left-1/2 -translate-x-1/2 w-[calc(8vw+16px)] md:w-20 h-[calc(8vw+16px)] md:h-20 bg-orange-300 blur-xl opacity-50 rounded-full z-[-1]" />
             )}
+
+            {/* Lamp image — synced with theme */}
             <img
-              src={isLampOn ? lampOn : lamp}
+              src={isDarkMode ? lampOn : lamp}
               alt="lamp"
-              className="thumb-c h-full w-full object-contain"
+              className="thumb-c h-full w-full object-contain transition-all duration-500 ease-in-out"
             />
           </div>
         )}
+
       </div>
 
       {/* Table bar */}

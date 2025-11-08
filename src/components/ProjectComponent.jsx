@@ -10,12 +10,12 @@ const ProjectComponent = ({ title, from, to, gif, summary, link, tags = [] }) =>
           <p className="text-sm md:text-md font-sue">{from} - {to}</p>
         </div>
         <h1 className="text-3xl md:text-4xl text-dark font-figtree mb-4">{title}</h1>
-        <p className="text-base md:text-lg text-gray-500 w-full md:w-68 leading-tight">{summary}</p>
+        <p className="text-base md:text-lg text-gray-500 dark:text-gray-200 w-full md:w-68 leading-tight">{summary}</p>
         <div className="flex flex-wrap gap-2 mt-2 w-full md:w-68">
           {tags.map((tag, index) => (
             <div
               key={index}
-              className="px-2 py-1 bg-gray-300 rounded-sm text-sm md:text-md text-gray-600 inline-block hover:bg-gray-600 hover:text-gray-300 transition"
+              className="px-2 py-1 bg-gray-300 rounded-sm text-sm md:text-md text-gray-600 inline-block hover:bg-gray-600 hover:text-gray-300 dark:hover:bg-niceorange dark:hover:text-gray-900 transition"
             >
               {tag}
             </div>

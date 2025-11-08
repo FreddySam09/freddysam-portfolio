@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, Suspense } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import dice1 from "../assets/dice/dice1.png";
@@ -286,27 +286,35 @@ const InteractiveDice = () => {
   return (
     <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-visible">
       {/* BIG BACKGROUND TEXT */}
-      <div className="absolute inset-0 flex items-center justify-center z-0 font-stadium text-[300px] sm:text-[440px] text-gray-900 drop-shadow-xl opacity-100 tracking-wide select-none pointer-events-none mt-16">
+      <div className="absolute inset-0 flex items-center justify-center z-0 font-stadium text-[300px] sm:text-[440px] text-gray-900 dark:text-gray-300 drop-shadow-xl opacity-100 tracking-wide select-none pointer-events-none mt-16">
         {backgroundText}
       </div>
 
-      {/* Three.js Canvas */}
-      <Canvas
-        camera={{ position: [0, 1, 3], fov: 50 }}
-        style={{ width: "100%", height: "100%", position: "relative", zIndex: 1 }}
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center h-full text-sm text-gray-500 dark:text-gray-400">
+            🎲 Loading Dice...
+          </div>
+        }
       >
-        <ambientLight intensity={4} />
-        <pointLight position={[2, 2, 2]} intensity={1} distance={10} />
-        <pointLight position={[-2, -2, -2]} intensity={0.5} distance={10} />
-        <Dice onRollComplete={handleRollComplete} />
-        <Stars radius={50} depth={50} count={500} factor={4} saturation={0} fade />
-        <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-      </Canvas>
+        <Canvas
+          camera={{ position: [0, 1, 3], fov: 50 }}
+          style={{ width: "100%", height: "100%", position: "relative", zIndex: 1 }}
+        >
+          <ambientLight intensity={4} />
+          <pointLight position={[2, 2, 2]} intensity={1} distance={10} />
+          <pointLight position={[-2, -2, -2]} intensity={0.5} distance={10} />
+          <Dice onRollComplete={handleRollComplete} />
+          <Stars radius={50} depth={50} count={500} factor={4} saturation={0} fade />
+          <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+        </Canvas>
+      </Suspense>
+
 
       {/* Bubble and mascot wrapper */}
     {(!hasSpun || memory) && (
     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 sm:mt-7 z-20">
-        <div className="relative bg-gray-100 outline-1 outline-dark p-2 w-42 sm:w-48 rounded-lg shadow-lg text-xs sm:text-sm font-figtree text-dark transition-opacity duration-500">
+        <div className="relative bg-gray-100 dark:bg-light outline-1 outline-dark p-2 w-42 sm:w-48 rounded-lg shadow-lg text-xs sm:text-sm font-figtree text-dark transition-opacity duration-500">
         
         {/* 🧸 Mascot sitting top-left corner of bubble */}
         <img

@@ -3,11 +3,17 @@ import welcomeNote from "../assets/img/welcome-note.png";
 import stickyNote from "../assets/img/sticky-note.png";
 import doodleArrow from "../assets/img/doodle-arrow.png";
 import doodlePaper from "../assets/img/doodle-paper.png";
+import { useTheme } from "../context/ThemeContext";
+import doodleArrowDark from "../assets/img/doodle-arrow-dark.png"
+
 
 export default function StickyNotesSection() {
   const canvasRef = useRef(null);
   const isDrawing = useRef(false);
   const [ctx, setCtx] = useState(null);
+  const { isDarkMode, toggleTheme } = useTheme();
+  const isDark = isDarkMode;
+
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -56,6 +62,7 @@ export default function StickyNotesSection() {
     ctx?.closePath();
   };
 
+
   return (
     <div className="relative w-full h-[200px] md:h-[260px] flex justify-center items-center md:justify-end">
       {/* White doodle paper */}
@@ -81,17 +88,19 @@ export default function StickyNotesSection() {
       />
 
       {/* Handwritten note */}
-      <p className="absolute top-[25px] right-[10px] md:right-[175px] text-xs md:text-lg text-gray-700 rotate-[6deg] font-sue leading-tight z-30">
+      <p className="absolute top-[25px] right-[10px] md:right-[175px] text-xs md:text-lg text-gray-700 rotate-[6deg] font-sue leading-tight z-30 dark:text-gray-100">
         do your little <br />
         doodle <span className="underline">here!</span>
       </p>
 
       {/* Arrow */}
       <img
-        src={doodleArrow}
+        key={isDark ? "arrow-dark" : "arrow-light"} 
+        src={isDark ? doodleArrowDark : doodleArrow}
         alt="Arrow Doodle"
-        className="absolute top-[45px] md:top-[60px] right-[30px] md:right-[220px] w-[25px] md:w-[40px] rotate-[10deg]"
+        className="absolute top-[45px] md:top-[60px] right-[30px] md:right-[220px] w-[25px] md:w-[40px] rotate-[10deg] transition-opacity duration-300 ease-in-out"
       />
+
 
       {/* Welcome Note */}
       <img

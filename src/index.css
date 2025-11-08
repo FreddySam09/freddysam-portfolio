@@ -3,6 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import "tailwindcss";
 
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark-theme {
+    color-scheme: dark;
+  }
+}
+
+/* Tell Tailwind that our dark class is .dark-theme */
+@custom-variant dark (&:is(.dark-theme *));
 :root {
   font-family: "Figtree", sans-serif;
   line-height: 1.5;
@@ -195,3 +206,57 @@ a.custom-cursor-active {
   scrollbar-color: rgba(125, 185, 207, 0.212) transparent;
 }
 
+@layer base {
+  ::selection {
+    background-color: theme('colors.niceorange');
+    color: white;
+  }
+  ::-moz-selection {
+    background-color: theme('colors.niceorange');
+    color: white;
+  }
+}
+/* -------------------------------------------- */
+/* 🌙 DARK THEME STYLES — toggled by lamp click */
+/* -------------------------------------------- */
+.dark-theme {
+  --color-dark: #f8f8f8;
+  --color-light: #141414;
+  --color-lightgray: #2a2a2a;
+  --color-darkgray: #d1d1d1;
+  --color-lightestgray: #121212;
+  --color-niceorange: #ff7f50;
+
+  color: var(--color-dark);
+  background-color: #141414;
+  background-image: url("./assets/bg-dark.png"); /* 👈 your black background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  transition: background-color 0.1s ease, color 0.1s ease, background-image 0.1s ease;
+}
+
+
+/* ---------- Dark mode utility base ---------- */
+@layer base {
+  .dark & {
+    --tw-text-opacity: 1;
+  }
+}
+
+/* Fallback for dark theme */
+html.dark,
+body.dark {
+  background-color: #141414;
+  color: #f5f5f5;
+}
+
+html, body {
+  transition: background-color 0.1s ease, background-image 0.1s ease;
+}
+
+/* Smooth transitions for inline SVG colors */
+svg, svg path {
+  transition: fill 0s ease-in-out, stroke 0s ease-in-out, color 0s ease-in-out;
+}

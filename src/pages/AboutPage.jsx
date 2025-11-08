@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import Lanyard from '../components/Lanyard';
 import ReactIcon from '../assets/img/react-icon.png';
@@ -20,6 +20,11 @@ import Frontend from '../assets/img/frontend.svg';
 import Backend from '../assets/img/backend.svg';
 import UiUx from '../assets/img/ui-ux.svg';
 import GraphicDesign from '../assets/img/graphic-design.svg';
+import FrontendDark from '../assets/img/frontend-dark.svg';
+import BackendDark from '../assets/img/backend-dark.svg';
+import UiUxDark from '../assets/img/ui-ux-dark.svg';
+import GraphicDesignDark from '../assets/img/graphic-design-dark.svg';
+import { useTheme } from '../context/ThemeContext';
 
 const skills = [
   { src: ReactIcon, label: "React.js" },
@@ -60,55 +65,9 @@ const experienceData = [
   }
 ];
 
-const Timeline = () => {
-  return (
-    <div className="relative max-w-5xl mx-auto mt-20 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-center text-dark font-bold text-3xl mb-16">EXPERIENCE</h1>
-      
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-300 z-0"></div>
-
-        {experienceData.map((item, index) => {
-          const isLeft = index % 2 === 0;
-
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="relative mb-20 flex flex-col sm:flex-row items-center sm:items-start"
-            >
-              {/* Content block */}
-              <div
-                className={`
-                  sm:w-1/2 w-full px-4 z-10
-                  ${isLeft ? "sm:pr-10 sm:justify-end sm:text-right" : "sm:pl-10 sm:justify-start sm:text-left"}
-                  flex justify-center text-center sm:text-inherit
-                `}
-              >
-                <div className="bg-light p-6 rounded-md border-2 border-dark shadow-md max-w-sm w-full">
-                  <img src={item.logo} alt={item.company} className="w-16 h-16 object-contain mb-4 mx-auto sm:mx-0" />
-                  <h3 className="text-xl font-semibold text-dark">{item.role}</h3>
-                  <p className="text-lg font-medium text-gray-800">{item.company}</p>
-                  <p className="text-sm text-gray-600">{item.duration}</p>
-                  <p className="text-base text-gray-600 mt-2">{item.description}</p>
-                </div>
-              </div>
-
-              {/* Timeline dot */}
-              <div className="absolute top-6 left-1/2 transform -translate-x-1/2 md:w-5 w-6 md:h-5 h-6 md:-mt-0 -mt-8 bg-dark rounded-full z-20 border-4 border-white"></div>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
 const AboutPage = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const { isDarkMode } = useTheme();
   return (
     <>
       {/* Back to Home */}
@@ -122,23 +81,30 @@ const AboutPage = () => {
         Home
       </a>
 
-      {/* Lanyard */}
-      <div className='-mt-4'>
-        <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+      {/* Lanyard Section */}
+      <div className="-mt-12 md:-mt-4">
+        <Suspense
+          fallback={
+            <div className="flex justify-center items-center h-40 text-gray-500 dark:text-gray-300">
+              Loading 3D Model...
+            </div>
+          }
+        >
+          <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+        </Suspense>
       </div>
-
       {/* Intro Text */}
       <p className='text-2xl justify-center text-center text-dark font-sue -mt-38 md:-mt-30 font-semibold'>
         Hey I'm <span className='font-sue text-4xl ml-1 top-2'>Freddy Sam</span>
       </p>
-      <p className='font-figtree mt-3 font-semibold text-gray-800 text-center animate-pulse'>
+      <p className='font-figtree mt-3 font-semibold text-gray-800 dark:text-gray-200 text-center animate-pulse'>
         Spin my card around till u see me
       </p>
 
       {/* About Text */}
 
       <div className='text-center items-center justify-center mt-21'>
-        <h1 className='font-semibold font-figtree md:text-3xl text-2xl text-dark'>An Artist Turned Developer</h1>
+        <h1 className='font-semibold font-figtree mt-30 md:mt-0 md:text-3xl text-2xl text-dark'>An Artist Turned Developer</h1>
         <h1 className='font-medium font-figtree md:text-xl text-lg leading-5 text-gray-600'>
           Addicted to Building Applications that <br /><span className='font-bold mt-1'>Stand out from the rest</span>
         </h1>
@@ -165,7 +131,7 @@ const AboutPage = () => {
             />
             </motion.div>
             {/* Tooltip for desktop */}
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-black bg-opacity-80 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap hidden md:block">
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-black dark:bg-gray-700 bg-opacity-80 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap hidden md:block">
               {skill.label}
             </div>
             {/* Label below icon for mobile only */}
@@ -182,43 +148,40 @@ const AboutPage = () => {
         <div className='flex flex-col md:flex-row gap-12 items-center justify-center'>
         {/* Frontend */}
         <div className='flex flex-col md:flex-row justify-center items-center w-full md:w-[calc(50%-1.5rem)] mb-6'>
-          <img src={Frontend} alt="frontend-doodle" className='w-42' />
+          <img src={isDarkMode ? FrontendDark : Frontend} alt="frontend-doodle" className='w-42' />
           <div className='flex flex-col mt-4 md:mt-0 md:ml-4 text-center md:text-start'>
             <h1 className='text-3xl text-dark font-semibold leading-7 mb-1'>Front-End Development</h1>
-            <p className='text-lg text-gray-600 leading-5 mt-2 w-70 ml-6 md:ml-0'>From Vanilla js, to Frameworks like React and Next js, I'm capable of developing amazing sites quick and well!</p>
+            <p className='text-lg text-gray-600 dark:text-gray-300 leading-5 mt-2 w-70 ml-6 md:ml-0'>From Vanilla js, to Frameworks like React and Next js, I'm capable of developing amazing sites quick and well!</p>
           </div>
         </div>
         {/* Graphic Design */}
         <div className='flex flex-col md:flex-row justify-center items-center w-full md:w-[calc(50%-1.5rem)] mb-6'>
-          <img src={GraphicDesign} alt="graphicdesign-doodle" className='w-38' />
+          <img src={isDarkMode ? GraphicDesignDark : GraphicDesign} alt="graphicdesign-doodle" className='w-38' />
           <div className='flex flex-col mt-4 md:mt-0 md:ml-4 text-center md:text-start'>
             <h1 className='text-3xl text-dark font-semibold leading-7 mb-1'>Graphic Design</h1>
-            <p className='text-lg text-gray-600 leading-5 mt-2 w-70'>I have a natural eye for good and appealing designs, have the skillset to pull them off as well</p>
+            <p className='text-lg text-gray-600 dark:text-gray-300 leading-5 mt-2 w-70'>I have a natural eye for good and appealing designs, have the skillset to pull them off as well</p>
           </div>
         </div>
         </div>
         <div className='flex flex-col md:flex-row gap-12 justify-center items-center'>
         {/* UI/UX */}
         <div className='flex flex-col md:flex-row justify-center items-center w-full md:w-[calc(50%-1.5rem)] mb-6'>
-          <img src={UiUx} alt="ui-ux-doodle" className='w-38' />
+          <img src={isDarkMode ? UiUxDark : UiUx} alt="ui-ux-doodle" className='w-38' />
           <div className='flex flex-col mt-4 md:mt-0 md:ml-4 text-center md:text-start'>
             <h1 className='text-3xl text-dark font-semibold leading-7 mb-1'>UI/UX Design</h1>
-            <p className='text-lg text-gray-600 leading-5 mt-2 w-70'>I love designing user interfaces and plan designs based on how I want users to experience the platform.</p>
+            <p className='text-lg text-gray-600 dark:text-gray-300 leading-5 mt-2 w-70'>I love designing user interfaces and plan designs based on how I want users to experience the platform.</p>
           </div>
         </div>
         {/* Integration */}
         <div className='flex flex-col md:flex-row justify-center items-center w-full md:w-[calc(50%-1.5rem)] mb-6'>
-          <img src={Backend} alt="integration-doodle" className='w-40' />
+          <img src={isDarkMode ? BackendDark : Backend} alt="integration-doodle" className='w-40' />
           <div className='flex flex-col mt-4 md:mt-0 md:ml-4 text-center md:text-start'>
             <h1 className='text-3xl text-dark font-semibold leading-7 mb-1'>Integration</h1>
-            <p className='text-lg text-gray-600 leading-5 mt-2 w-70'>Integrating Software Platforms with other technologies such as AI, Hardware & Communication Services</p>
+            <p className='text-lg text-gray-600 dark:text-gray-300 leading-5 mt-2 w-70'>Integrating Software Platforms with other technologies such as AI, Hardware & Communication Services</p>
           </div>
         </div>
         </div>
       </div>
-
-      {/* Timeline Section */}
-      <Timeline />
     </>
   );
 };

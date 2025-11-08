@@ -13,19 +13,27 @@ import mobileHead from '../assets/img/digibridge/mobile-head.png';
 import mobile1 from '../assets/img/digibridge/mobile-1.png';
 import mobile2 from '../assets/img/digibridge/mobile-2.png';
 import Navbar from '../components/Navbar';
-import hub from '../assets/img/digibridge/hub.png'
-import sihfinal from '../assets/img/digibridge/sih-final.jpg'
-import game1 from '../assets/img/digibridge/game-1.gif'
-import game2 from '../assets/img/digibridge/game-2.gif'
-import game3 from '../assets/img/digibridge/game-3.gif'
+import hub from '../assets/img/digibridge/hub.png';
+import sihfinal from '../assets/img/digibridge/sih-final.jpg';
+import game1 from '../assets/img/digibridge/game-1.gif';
+import game2 from '../assets/img/digibridge/game-2.gif';
+import game3 from '../assets/img/digibridge/game-3.gif';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.7, ease: 'easeOut' },
+  }),
+};
 
 const DigiBridgePage = () => {
   return (
     <>
-    <a
+      <a
         href="/"
-        className="fixed top-8 md:top-6 left-4 md:left-6 z-50 flex items-center gap-2 text-xs md:text-sm font-figtree text-darkgray px-3 md:px-4 py-1 md:py-2 rounded-full hover:text-dark hover:font-semibold transition-all duration-400"
+        className="fixed top-8 md:top-6 left-4 md:left-6 z-50 flex items-center gap-2 text-xs md:text-sm font-figtree text-darkgray dark:text-gray-400 px-3 md:px-4 py-1 md:py-2 rounded-full hover:text-dark dark:hover:text-gray-100 hover:font-semibold transition-all duration-400"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -39,431 +47,620 @@ const DigiBridgePage = () => {
         </svg>
         Home
       </a>
-    <div className="font-figtree text-gray-900 bg-white">
-      {/* Hero Section */}
-      <section className="relative px-6 md:px-12 lg:px-24 pt-16 bg-white">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-7xl mx-auto items-start">
-          {/* Left Section - Text & Hero Image */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Header with SIH logo on mobile */}
-            <div className="flex justify-between items-center">
-              <p className="uppercase text-sm font-semibold tracking-widest">DIGIBRIDGE</p>
-              <img
-                src={sihImg}
-                alt="Smart India Hackathon"
-                className="w-20 md:w-24 lg:hidden"
+
+      <div className="font-figtree text-gray-900 dark:text-gray-100 bg-light dark:bg-[#0e0e0e] overflow-x-hidden">
+        {/* Hero Section */}
+        <motion.section
+          className="relative px-6 md:px-12 lg:px-24 pt-16 bg-light dark:bg-[#121212]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-7xl mx-auto items-start">
+            <div className="lg:col-span-2 space-y-6">
+              <motion.div
+                className="flex justify-between items-center"
+                custom={0.1}
+                variants={fadeUp}
+              >
+                <p className="uppercase text-sm font-semibold tracking-widest dark:text-gray-200">DIGIBRIDGE</p>
+                <img src={sihImg} alt="Smart India Hackathon" className="w-20 md:w-24 lg:hidden" />
+              </motion.div>
+
+              <motion.h1
+                className="text-4xl md:text-5xl font-bold leading-tight dark:text-white"
+                custom={0.2}
+                variants={fadeUp}
+              >
+                Smart Education<br />Accessible to Everyone
+              </motion.h1>
+
+              <motion.button
+                className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-2 text-sm font-medium rounded-md w-fit"
+                custom={0.3}
+                variants={fadeUp}
+              >
+                Project Showcase
+              </motion.button>
+
+              <motion.div
+                className="grid grid-cols-2 md:grid-cols-2 gap-6 text-sm mt-6 lg:hidden"
+                custom={0.4}
+                variants={fadeUp}
+              >
+                <div>
+                  <h3 className="font-semibold mb-1 dark:text-gray-200">ROLE</h3>
+                  <p className="text-gray-600 dark:text-gray-300">Front-End Development<br />Design Thinking</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1 dark:text-gray-200">SKILLS</h3>
+                  <p className="text-gray-600 dark:text-gray-300">Product Design<br />Prototyping<br />Game Development</p>
+                </div>
+                <div className="col-span-2">
+                  <h3 className="font-semibold mb-1 text-sm dark:text-gray-200">TEAMMATES</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Tharun Raj R G, Vishal N, Rahul V, Aparna S,<br />
+                    Aishvarya R, Thiriphura Sundari C S,<br />
+                    Krishnaja S, Raghul D
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.img
+                src={heroImg}
+                alt="Hero"
+                className="md:w-7/8 mt-2 -ml-2 md:-ml-6 -mb-12 md:-mb-1"
+                custom={0.5}
+                variants={fadeUp}
               />
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Smart Education<br />Accessible to Everyone
-            </h1>
+            <motion.div
+              className="flex flex-col gap-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              <img src={sihImg} alt="Smart India Hackathon" className="w-28 md:w-32 lg:w-40 self-end hidden lg:block" />
 
-            <button className="bg-gray-200 text-gray-800 px-4 py-2 text-sm font-medium rounded-md w-fit">
-              Project Showcase
-            </button>
+              <div className="grid grid-cols-2 md:grid-cols-2 gap-6 text-sm hidden lg:grid">
+                <div>
+                  <h3 className="font-semibold mb-1 dark:text-gray-200">ROLE</h3>
+                  <p className="text-gray-600 dark:text-gray-300">Front-End Development<br />Design Thinking</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1 dark:text-gray-200">SKILLS</h3>
+                  <p className="text-gray-600 dark:text-gray-300">Product Design<br />Prototyping<br />Game Development</p>
+                </div>
+              </div>
 
-            {/* Role / Skills / Team - Mobile only */}
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-6 text-sm mt-6 lg:hidden">
-              <div>
-                <h3 className="font-semibold mb-1">ROLE</h3>
-                <p className="text-gray-600">Front-End Development<br />Design Thinking</p>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">SKILLS</h3>
-                <p className="text-gray-600">Product Design<br />Prototyping<br />Game Development</p>
-              </div>
-              <div className="col-span-2">
-                <h3 className="font-semibold mb-1 text-sm">TEAMMATES</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="hidden lg:block">
+                <h3 className="font-semibold mb-1 text-sm dark:text-gray-200">TEAMMATES</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
                   Tharun Raj R G, Vishal N, Rahul V, Aparna S,<br />
                   Aishvarya R, Thiriphura Sundari C S,<br />
                   Krishnaja S, Raghul D
                 </p>
               </div>
-            </div>
 
-            <img src={heroImg} alt="Hero" className="md:w-7/8 mt-2 -ml-2 md:-ml-6 -mb-12 md:-mb-1" />
-          </div>
-
-          {/* Right Section - Role, Skills, Team, TOC, SIH Badge (Desktop only) */}
-          <div className="flex flex-col gap-8">
-            {/* SIH Badge (Desktop only) */}
-            <img
-              src={sihImg}
-              alt="Smart India Hackathon"
-              className="w-28 md:w-32 lg:w-40 self-end hidden lg:block"
-            />
-
-            {/* Role/Skills/Team - Desktop only */}
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-6 text-sm hidden lg:grid">
-              <div>
-                <h3 className="font-semibold mb-1">ROLE</h3>
-                <p className="text-gray-600">Front-End Development<br />Design Thinking</p>
+              <div className="mt-4 hidden lg:block">
+                <h3 className="text-base font-semibold mb-2 flex items-center gap-2 dark:text-gray-200">
+                  <span>📝</span> Table of Contents
+                </h3>
+                <ol className="text-sm text-gray-700 dark:text-gray-300 space-y-1 border border-gray-300 dark:border-gray-700 rounded-md p-4">
+                  <li><strong>1</strong> &nbsp; The Problem with Education in India</li>
+                  <li><strong>2</strong> &nbsp; The Solution: DigiBridge</li>
+                  <li><strong>3</strong> &nbsp; AI-Based Early Warning System</li>
+                  <li><strong>4</strong> &nbsp; Application Features</li>
+                  <li><strong>5</strong> &nbsp; Community Learning Hubs</li>
+                </ol>
               </div>
-              <div>
-                <h3 className="font-semibold mb-1">SKILLS</h3>
-                <p className="text-gray-600">Product Design<br />Prototyping<br />Game Development</p>
-              </div>
-            </div>
-
-            <div className="hidden lg:block">
-              <h3 className="font-semibold mb-1 text-sm">TEAMMATES</h3>
-              <p className="text-gray-600 text-sm">
-                Tharun Raj R G, Vishal N, Rahul V, Aparna S,<br />
-                Aishvarya R, Thiriphura Sundari C S,<br />
-                Krishnaja S, Raghul D
-              </p>
-            </div>
-
-            {/* TOC - Desktop only */}
-            <div className="mt-4 hidden lg:block">
-              <h3 className="text-base font-semibold mb-2 flex items-center gap-2">
-                <span>📝</span> Table of Contents
-              </h3>
-              <ol className="text-sm text-gray-700 space-y-1 border border-gray-300 rounded-md p-4">
-                <li><strong>1</strong> &nbsp; The Problem with Education in India</li>
-                <li><strong>2</strong> &nbsp; The Solution: DigiBridge</li>
-                <li><strong>3</strong> &nbsp; AI-Based Early Warning System</li>
-                <li><strong>4</strong> &nbsp; Application Features</li>
-                <li><strong>5</strong> &nbsp; Community Learning Hubs</li>
-              </ol>
-            </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </motion.section>
 
-      {/* Problem Section */}
-      <section section id="problem-section" className="bg-black text-white py-20 px-4 md:px-12 lg:px-32 space-y-16 w-screen items-center">
-        <h2 className="text-2xl md:text-3xl font-semibold">The Problem with Education in India</h2>
-
-        <div className="space-y-20">
-          {/* Problem 1 */}
-          <div className="text-center space-y-6">
-            <img src={prb1} alt="Problem 1" className="mx-auto max-w-xs animate-pulse" />
-            <p className="text-base max-w-xl mx-auto">
-              Despite The Government building more schools than ever, The sheer amount of rural
-              communities that lack access to them are evergrowing.
-            </p>
-          </div>
-
-          {/* Problem 2 */}
-          <div className="flex flex-col md:flex-row justify-center items-center gap-10 text-center md:text-left">
-            <img src={prb2} alt="Problem 2" className="w-72 animate-pulse" />
-            <p className="text-base max-w-md">
-              Financial Constraints require money for families, which results in opting of child labour
-              over pursuing education at unreachable distances.
-            </p>
-          </div>
-
-          {/* Problem 3 */}
-          <div className="text-center space-y-6">
-            <img src={prb3} alt="Problem 3" className="mx-auto max-w-xs animate-pulse" />
-            <p className="text-base max-w-xl mx-auto">
-              On top of that, The digitalization of education, affects the ones that are unconnected to the facilities
-              severely, resulting in the manifestation of Digital Divide in Education.
-            </p>
-          </div>
-        </div>
-      </section>
-      {/* Solution Section */}
-      <section className="bg-white text-center py-20 px-4 md:px-12 lg:px-32 space-y-8">
-        <h2 className="text-2xl md:text-3xl font-semibold">Our Solution: DigiBridge</h2>
-        <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{
-                  duration: 0.4,
-                  scale: { type: "spring", visualDuration: 0.3, bounce: 0.2 },
-                  }}
+        {/* Problem Section */}
+        <motion.section
+          id="problem-section"
+          className="bg-black text-white py-20 px-4 md:px-12 lg:px-32 space-y-16 w-screen items-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <h2 className="text-2xl md:text-3xl font-semibold text-center">The Problem with Education in India</h2>
+          <div className="space-y-20 text-center">
+            {[{ img: prb1, text: "Despite The Government building more schools than ever, The sheer amount of rural communities that lack access to them are evergrowing.", align: "center" },
+              { img: prb2, text: "Financial Constraints require money for families, which results in opting of child labour over pursuing education at unreachable distances.", align: "row" },
+              { img: prb3, text: "On top of that, The digitalization of education, affects the ones that are unconnected to the facilities severely, resulting in the manifestation of Digital Divide in Education.", align: "center" }]
+              .map((item, i) => (
+                <motion.div
+                  key={i}
+                  className={`flex flex-col ${item.align === "row" ? "md:flex-row" : ""} justify-center items-center gap-10 text-center md:text-left`}
+                  custom={i}
+                  variants={fadeUp}
                 >
-        <img src={sol1} alt="Solution Logo" className="mx-auto md:max-w-md -mt-12" /></motion.div>
-        <p className="text-base max-w-2xl mx-auto">
-          An Innovative <strong>e-learning platform</strong> designed to <strong>bridge the digital divide</strong> in education,
-          providing equitable access to quality learning resources. It integrates personalized support, community engagement,
-          and interactive tools to improve student retention, across platforms, <strong>aligning with the goals of NEP 2020</strong>.
-        </p>
-      </section>
-
-      {/* AI Section */}
-      <section className="bg-white py-20 px-4 md:px-12 lg:px-32 space-y-12">
-        <h2 className="text-2xl md:text-3xl font-bold">AI – Based Early Warning System</h2>
-        <div className="flex flex-col lg:flex-row gap-12 justify-between items-start">
-          {/* Left Column - Points */}
-          <div className="space-y-6 max-w-xl">
-            <div className="flex items-start gap-4">
-              <div className="text-white bg-teal-600 w-8 h-8 flex items-center justify-center rounded-full font-bold px-3">01</div>
-              <p>
-                <strong>Identify</strong> <br />
-                AI model <strong>analyzes data</strong> to identify students at risk by assessing factors like attendance and grades,
-                assigning a risk level, and recording the primary risk factors and identification date.
-              </p>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="text-white bg-teal-600 w-8 h-8 flex items-center justify-center rounded-full font-bold px-3">02</div>
-              <p>
-                <strong>Intervene</strong> <br />
-                The AI model suggests <strong>intervention strategies</strong> for each at-risk student. Educators can input customized
-                intervention plans based on specific needs, which refine the AI model over time.
-              </p>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="text-white bg-teal-600 w-8 h-8 flex items-center justify-center rounded-full font-bold px-3">03</div>
-              <p>
-                <strong>Impact</strong> <br />
-                <strong>Regular progress updates</strong> document the student’s improvement, with outcomes like “Improved” or “Needs Further Intervention” guiding next steps.
-              </p>
-            </div>
+                  <img src={item.img} alt={`Problem ${i + 1}`} className="w-72 animate-pulse" />
+                  <p className="text-center max-w-md text-gray-200">{item.text}</p>
+                </motion.div>
+              ))}
           </div>
+        </motion.section>
 
-          {/* Right Column - Dashboards */}
-          <div className="space-y-6 -mb-12 md:-mb-0 md:-mt-32 drop-shadow-xl">
-            <img src={ai1} alt="AI Dashboard 1" className="w-full max-w-md mx-auto lg:mx-0" />
-            <img src={ai2} alt="AI Dashboard 2" className="w-full max-w-md mx-auto lg:mx-0" />
-          </div>
-        </div>
-      </section>
+        {/* Solution Section */}
+        <motion.section
+          className="bg-light dark:bg-[#121212] text-center py-20 px-4 md:px-12 lg:px-32 space-y-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <h2 className="text-2xl md:text-3xl font-semibold dark:text-gray-100">Our Solution: DigiBridge</h2>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
+            <img src={sol1} alt="Solution Logo" className="mx-auto md:max-w-md -mt-12" />
+          </motion.div>
+          <motion.p
+            className="text-base max-w-2xl mx-auto text-gray-800 dark:text-gray-300"
+            custom={0.3}
+            variants={fadeUp}
+          >
+            An Innovative <strong>e-learning platform</strong> designed to <strong>bridge the digital divide</strong>...
+          </motion.p>
+        </motion.section>
+        {/* AI Section */}
+        <motion.section
+          className="bg-light dark:bg-[#101010] py-20 px-4 md:px-12 lg:px-32 space-y-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <h2 className="text-2xl md:text-3xl font-bold dark:text-white">
+            AI – Based Early Warning System
+          </h2>
+          <div className="flex flex-col lg:flex-row gap-12 justify-between items-start">
+            <motion.div
+              className="space-y-6 max-w-xl text-gray-800 dark:text-gray-300"
+              variants={fadeUp}
+            >
+              {[
+                {
+                  step: "01",
+                  title: "Identify",
+                  desc:
+                    "AI model analyzes data to identify students at risk by assessing factors like attendance and grades, assigning a risk level, and recording the primary risk factors and identification date.",
+                },
+                {
+                  step: "02",
+                  title: "Intervene",
+                  desc:
+                    "The AI model suggests intervention strategies for each at-risk student. Educators can input customized intervention plans based on specific needs, refining the AI model over time.",
+                },
+                {
+                  step: "03",
+                  title: "Impact",
+                  desc:
+                    "Regular progress updates document the student’s improvement, with outcomes like 'Improved' or 'Needs Further Intervention' guiding next steps.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  className="flex items-start gap-4"
+                  custom={i}
+                  variants={fadeUp}
+                >
+                  <div className="text-white bg-teal-600 w-8 h-8 flex items-center justify-center rounded-full font-bold px-3">
+                    {item.step}
+                  </div>
+                  <p>
+                    <strong>{item.title}</strong> <br /> {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
 
-      {/* Features Section */}
-      <section className="bg-white py-20 px-4 md:px-12 lg:px-32 -mt-0 md:-mt-12">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10">Application Features</h2>
-        <img src={desktopHead} alt="Desktop App" className="w-screen -mt-18 md:-mt-46" />
+            <motion.div
+              className="space-y-6 -mb-12 md:-mb-0 md:-mt-32 drop-shadow-xl"
+              variants={fadeUp}
+            >
+              <motion.img
+                src={ai1}
+                alt="AI Dashboard 1"
+                className="w-full max-w-md mx-auto lg:mx-0 rounded-lg"
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: 'spring', stiffness: 150 }}
+              />
+              <motion.img
+                src={ai2}
+                alt="AI Dashboard 2"
+                className="w-full max-w-md mx-auto lg:mx-0 rounded-lg"
+                whileHover={{ scale: 1.04 }}
+              />
+            </motion.div>
+          </div>
+        </motion.section>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm text-white">
-          <div className="bg-[#6cb5af] p-4 rounded-md">
-            <h3 className="font-bold mb-2">Multilingual</h3>
-            <p>Aligned with NEP 2020, the desktop Application offers <strong>three language support</strong> - Hindi, English and regional Language.</p>
-          </div>
-          <div className="bg-[#453861] p-4 rounded-md">
-            <h3 className="font-bold mb-2">Multiple Learning ways</h3>
-            <p>Interactive videos, quizzes, <strong>3D models</strong>, and game-based learning to make studying fun.</p>
-          </div>
-          <div className="bg-[#6cb5af] p-4 rounded-md">
-            <h3 className="font-bold mb-2">Parental Engagement</h3>
-            <p>Sends updates via <strong>Whatsapp or SMS</strong> to keep parents informed about child’s progress.</p>
-          </div>
-          <div className="bg-[#453861] p-4 rounded-md">
-            <h3 className="font-bold mb-2">Daily Student Engagement</h3>
-            <p>Targets <strong>subjects students struggle</strong> in by offering daily questions and assessments.</p>
-          </div>
-        </div>
-      </section>
-      {/* Mobile App Section */}
-      <section className="bg-white py-20 px-4 md:px-12 lg:px-32 space-y-16 -mt-21">
-        <div className="text-center space-y-4">
-          <img src={mobileHead} alt="Mobile Hero" className="mx-auto w-40 sm:w-56 md:w-64" />
-          <h2 className="text-4xl font-bold tracking-wide">MOBILE</h2>
-          <p className="text-lg font-semibold -mt-5">LEARNING APP</p>
-        </div>
+        {/* Features Section */}
+        <motion.section
+          className="bg-light dark:bg-[#121212] py-20 px-4 md:px-12 lg:px-32 -mt-0 md:-mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10 dark:text-gray-100">
+            Application Features
+          </h2>
 
-        <div className="bg-[#453861] text-white py-12 px-6 rounded-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
-          <img src={mobile1} alt="Mobile Screens" className="mx-auto w-full max-w-4xl" />
+          <motion.img
+            src={desktopHead}
+            alt="Desktop App"
+            className="w-screen -mt-18 md:-mt-46"
+            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.7 }}
+          />
 
-          <div className="text-white text-sm space-y-6 lg:w-1/2">
-            <h3 className="text-xl font-semibold">Mobile App</h3>
-            <p>
-              The Digibridge mobile application is designed to make education accessible to all students,
-              even in areas with limited resources and internet connectivity. It bridges the involvement
-              gap between schools, students, and parents.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <div className="bg-[#70C3BC] p-4 rounded-lg flex-1">
-                <h4 className="font-bold mb-2">01 Parental Engagement Portal</h4>
-                <p className="text-xs">
-                  Low parental literacy and limited involvement are significant contributors to student dropout rates.
-                  Sends updates via WhatsApp or SMS about the child's attendance and academic performance.
-                  Ensures parents stay informed even if they are not digitally proficient.
-                </p>
-              </div>
-              <div className="bg-[#5E4B8B] p-4 rounded-lg flex-1">
-                <h4 className="font-bold mb-2">02 Financial Support Management System</h4>
-                <p className="text-xs">
-                  Provides comprehensive details about available government schemes and scholarships. Filters out
-                  eligible aid programs and educates parents about financial schemes.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Feature Bullets */}
-        <div className="mt-20 flex flex-col lg:flex-row items-start gap-12">
-          {/* Left: Image */}
-          <div className="flex-1">
-            <img src={mobile2} alt="Mobile Features" className="w-full max-w-5xl mx-auto lg:mx-0" />
-          </div>
-
-          {/* Right: Text Points */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm md:mt-27">
+          <motion.div
+            className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm text-white"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {[
               {
-                title: 'Multilingual Support',
-                desc:
-                  'Follows the three-language formula aligned with NEP 2020, ensuring inclusivity for all students.'
+                color: "bg-[#6cb5af]",
+                title: "Multilingual",
+                desc: "Aligned with NEP 2020, the desktop Application offers three language support - Hindi, English and regional Language.",
               },
               {
-                title: 'Encouraging Leaderboard',
-                desc:
-                  'Highlights only the top three scorers to promote healthy competition without discouraging others.'
+                color: "bg-[#453861]",
+                title: "Multiple Learning ways",
+                desc: "Interactive videos, quizzes, 3D models, and game-based learning to make studying fun.",
               },
               {
-                title: 'Flexible Schooling',
-                desc:
-                  'DigiBridge ensures students can continue their learning from home, contributing to flexible education.'
+                color: "bg-[#6cb5af]",
+                title: "Parental Engagement",
+                desc: "Sends updates via Whatsapp or SMS to keep parents informed about child’s progress.",
               },
               {
-                title: 'Goal Setting and Progress Tracking',
-                desc:
-                  'Students can set personalized goals and monitor their progress, helping them stay motivated and focused on their academic journey.'
-              }
-            ].map((item, index) => (
-              <div key={index}>
-                <h4 className="font-bold mb-2 flex items-center gap-2">
-                  <span className="text-white bg-[#5E4B8B] w-6 h-6 flex items-center justify-center rounded-full text-xs">
-                    0{index + 1}
-                  </span>
-                  {item.title}
-                </h4>
-                <p className="text-gray-700">{item.desc}</p>
-              </div>
+                color: "bg-[#453861]",
+                title: "Daily Student Engagement",
+                desc: "Targets subjects students struggle in by offering daily questions and assessments.",
+              },
+            ].map((f, i) => (
+              <motion.div
+                key={i}
+                className={`${f.color} p-4 rounded-md hover:scale-105 transform transition-transform duration-300 shadow-lg`}
+                custom={i}
+                variants={fadeUp}
+              >
+                <h3 className="font-bold mb-2">{f.title}</h3>
+                <p>{f.desc}</p>
+              </motion.div>
             ))}
-          </div>
-        </div>
-        {/* Interactive Learning Section */}
-        <section className="bg-white py-16 px-4 md:px-12 lg:px-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start md:-ml-24">
-            {/* Left GIFs */}
-            <div className="space-y-6">
-              <img src={game1} alt="Game 1" className="rounded-lg w-full shadow-md" />
-              <img src={game2} alt="Game 2" className="rounded-lg w-full shadow-md" />
-              <img src={game3} alt="Game 3" className="rounded-lg w-full shadow-md" />
-            </div>
+          </motion.div>
+        </motion.section>
 
-            {/* Right Content */}
-            <div className="space-y-8">
-              <h2 className="text-2xl md:text-3xl font-bold md:mt-26">Interactive Learning</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 gap-x-36">
+        {/* Mobile App Section */}
+        <motion.section
+          className="bg-light dark:bg-[#111] py-20 px-4 md:px-12 lg:px-32 space-y-16 -mt-21"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <motion.div
+            className="text-center space-y-4"
+            variants={fadeUp}
+            custom={0}
+          >
+            <motion.img
+              src={mobileHead}
+              alt="Mobile Hero"
+              className="mx-auto w-40 sm:w-56 md:w-64"
+              whileInView={{ scale: 1, opacity: 1 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.7 }}
+            />
+            <h2 className="text-4xl font-bold tracking-wide dark:text-gray-100">
+              MOBILE
+            </h2>
+            <p className="text-lg font-semibold -mt-5 dark:text-gray-300">
+              LEARNING APP
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="bg-[#453861] text-white py-12 px-6 rounded-2xl flex flex-col lg:flex-row items-center justify-between gap-12"
+            variants={fadeUp}
+            custom={0.2}
+          >
+            <motion.img
+              src={mobile1}
+              alt="Mobile Screens"
+              className="mx-auto w-full max-w-4xl rounded-lg"
+              whileHover={{ scale: 1.03 }}
+            />
+            <motion.div
+              className="text-white text-sm space-y-6 lg:w-1/2"
+              variants={fadeUp}
+            >
+              <h3 className="text-xl font-semibold">Mobile App</h3>
+              <p>
+                The Digibridge mobile application is designed to make education accessible to all students...
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6">
                 {[
                   {
-                    title: "Gamified Learning",
-                    desc: "Story Mode Gaming Modules, and Dynamic Gamified Quizzes prompt an Interactive Application of concepts learnt.",
+                    color: "bg-[#70C3BC]",
+                    title: "01 Parental Engagement Portal",
+                    desc: "Low parental literacy and limited involvement are significant contributors...",
                   },
                   {
-                    title: "Video Quizzes",
-                    desc: "Video modules come alongside interactive quizzes that keep the learner engaged throughout the runtime.",
-                  },
-                  {
-                    title: "Dissectable 3D Models",
-                    desc: "Interactive dissection of 3D models results in easier understanding of complex anatomy.",
-                  },
-                  {
-                    title: "Specific Games",
-                    desc: "Creative topic-based games tailored for better understanding and concept clarity.",
+                    color: "bg-[#5E4B8B]",
+                    title: "02 Financial Support Management System",
+                    desc: "Provides details about available government schemes and scholarships.",
                   },
                 ].map((item, i) => (
-                  <div
+                  <motion.div
                     key={i}
-                    className="bg-[#f3f0fa] border-l-4 border-[#5E4B8B] p-4 md:w-56 rounded-lg text-sm shadow-sm"
+                    className={`${item.color} p-4 rounded-lg flex-1 hover:scale-105 transition-transform duration-300`}
+                    variants={fadeUp}
+                    custom={i}
                   >
-                    <h4 className="font-semibold text-[#5E4B8B] mb-1">{item.title}</h4>
-                    <p className="text-gray-700">{item.desc}</p>
-                  </div>
+                    <h4 className="font-bold mb-2">{item.title}</h4>
+                    <p className="text-xs">{item.desc}</p>
+                  </motion.div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
+            </motion.div>
+          </motion.div>
 
-        {/* Community Hubs Section */}
-        <section className="bg-white py-16 px-4 md:px-12 lg:px-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-            {/* Left Text */}
-            <div className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold">Community Learning Hubs</h2>
-              <p className="text-base text-gray-800">
-                <strong>Utilising Refurbished Shipping Containers</strong> to build accessible learning spaces.
-              </p>
-              <p className="text-base text-gray-800">
-                <strong>Equipped with PCs</strong> and all digital learning essentials.
-              </p>
-              <p className="text-base text-gray-800">
-                Brings education to the underserved, especially those who <strong>lack the facilities</strong>.
-              </p>
-            </div>
-
-            {/* Right Image */}
-            <img
-              src={hub}
-              alt="Learning Hub"
-              className="md:w-172 w-full max-w-md mx-auto rounded-xl"
-            />
-          </div>
-        </section>
-
-        {/* PDF and Video Section */}
-      <section className="py-20 px-4 md:px-12 lg:px-24 bg-white -mt-32">
-        <h1 className='text-center justify-center mb-6 text-dark font-semibold text-lg'>Project Material and Video</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start max-w-7xl mx-auto">
-          {/* PDF Viewer */}
-          <div className="md:w-lg w-full h-[500px] md:h-[290px] md:-ml-24">
-            <iframe
-              src="/pdfs/db-ppt.pdf"
-              className="w-full h-full border rounded-xl shadow-md"
-              title="Digibridge PDF"
-            />
-          </div>
-
-          {/* Video Player */}
-          <div className="w-full md:w-lg aspect-video rounded-xl overflow-hidden shadow-md">
-            <video controls className="w-full h-full object-cover rounded-xl">
-              <source src="/videos/db-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </section>
-
-        {/* SIH Team Section */}
-        <section className="bg-white py-20 px-4 md:px-12 lg:px-32 text-center">
-          <div className="mx-auto w-full max-w-3xl px-2">
-            <img
-              src={sihfinal}
-              alt="SIH Final Team"
-              className="w-full rounded-lg shadow-md"
-            />
-          </div>
-          <h3 className="text-base md:text-lg font-semibold mt-6 text-gray-800">
-            The Team at the <br />
-            <span className="text-xl md:text-2xl font-bold text-black">
-              Smart India Hackathon 2024 Final
-            </span>
-          </h3>
-        </section>
-
-        {/* CTA Section */}
-        <section className="bg-white border-t py-12 px-4 md:px-12 lg:px-32 text-center">
-          <p className="text-sm md:text-base font-medium text-gray-500 mb-2">Done Reading?</p>
-          <h3 className="text-lg md:text-xl font-extrabold mb-6 text-black">
-            Check out my other projects
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="/aquavision"
-              className="bg-black text-white px-5 py-2 rounded-md text-sm md:text-base hover:bg-gray-800 transition"
+          {/* Interactive Learning Section */}
+          <motion.section
+            className="bg-light dark:bg-[#121212] py-16 px-4 md:px-12 lg:px-32"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <motion.div
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start md:-ml-24"
+              variants={fadeUp}
             >
-              AquaVision
-            </a>
-            <a
-              href="/clickshield"
-              className="bg-black text-white px-5 py-2 rounded-md text-sm md:text-base hover:bg-gray-800 transition"
-            >
-              ClickShield
-            </a>
-          </div>
-        </section>
+              <div className="space-y-6">
+                {[game1, game2, game3].map((g, i) => (
+                  <motion.img
+                    key={i}
+                    src={g}
+                    alt={`Game ${i + 1}`}
+                    className="rounded-lg w-full shadow-md hover:scale-105 transition-transform duration-300"
+                    custom={i}
+                    variants={fadeUp}
+                  />
+                ))}
+              </div>
 
-      </section>
-    </div>
+              <motion.div className="space-y-8" variants={fadeUp}>
+                <h2 className="text-2xl md:text-3xl font-bold md:mt-26 dark:text-gray-100">
+                  Interactive Learning
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 gap-x-36">
+                  {[
+                    {
+                      title: "Gamified Learning",
+                      desc: "Story Mode Gaming Modules and Dynamic Gamified Quizzes...",
+                    },
+                    {
+                      title: "Video Quizzes",
+                      desc: "Video modules come alongside interactive quizzes...",
+                    },
+                    {
+                      title: "Dissectable 3D Models",
+                      desc: "Interactive dissection of 3D models...",
+                    },
+                    {
+                      title: "Specific Games",
+                      desc: "Creative topic-based games tailored for better understanding.",
+                    },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      className="bg-[#f3f0fa] dark:bg-[#1e1b2b] border-l-4 border-[#5E4B8B] p-4 md:w-56 rounded-lg text-sm shadow-sm hover:translate-x-1 transition-transform"
+                      custom={i}
+                      variants={fadeUp}
+                    >
+                      <h4 className="font-semibold text-[#5E4B8B] mb-1 dark:text-[#a88df4]">
+                        {item.title}
+                      </h4>
+                      <p className="text-gray-700 dark:text-gray-300">
+                        {item.desc}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          </motion.section>
+          {/* Community Hubs Section */}
+          <motion.section
+            className="bg-light dark:bg-[#121212] py-16 px-4 md:px-12 lg:px-32"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <motion.div
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center"
+              variants={fadeUp}
+            >
+              <motion.div
+                className="space-y-4"
+                variants={fadeUp}
+                custom={0.1}
+              >
+                <h2 className="text-2xl md:text-3xl font-bold dark:text-gray-100">
+                  Community Learning Hubs
+                </h2>
+                <p className="text-base text-gray-800 dark:text-gray-300">
+                  <strong>Utilising Refurbished Shipping Containers</strong> to
+                  build accessible learning spaces.
+                </p>
+                <p className="text-base text-gray-800 dark:text-gray-300">
+                  <strong>Equipped with PCs</strong> and all digital learning
+                  essentials.
+                </p>
+                <p className="text-base text-gray-800 dark:text-gray-300">
+                  Brings education to the underserved, especially those who{" "}
+                  <strong>lack the facilities</strong>.
+                </p>
+              </motion.div>
+
+              <motion.img
+                src={hub}
+                alt="Learning Hub"
+                className="md:w-172 w-full max-w-md mx-auto rounded-xl hover:scale-[1.03] transition-transform duration-300"
+                variants={fadeUp}
+                custom={0.2}
+                whileHover={{ y: -6 }}
+              />
+            </motion.div>
+          </motion.section>
+
+          {/* PDF and Video Section */}
+          <motion.section
+            className="py-20 px-4 md:px-12 lg:px-24 bg-light dark:bg-[#111] -mt-32"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <motion.h1
+              className="text-center justify-center mb-6 text-dark dark:text-gray-100 font-semibold text-lg"
+              variants={fadeUp}
+            >
+              Project Material and Video
+            </motion.h1>
+
+            <motion.div
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start max-w-7xl mx-auto"
+              variants={fadeUp}
+            >
+              <motion.div
+                className="md:w-lg w-full h-[500px] md:h-[290px] md:-ml-24"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 150 }}
+              >
+                <iframe
+                  src="/pdfs/db-ppt.pdf"
+                  className="w-full h-full border rounded-xl shadow-md dark:border-gray-700"
+                  title="Digibridge PDF"
+                />
+              </motion.div>
+
+              <motion.div
+                className="w-full md:w-lg aspect-video rounded-xl overflow-hidden shadow-md"
+                whileHover={{ scale: 1.03 }}
+              >
+                <video
+                  controls
+                  className="w-full h-full object-cover rounded-xl"
+                >
+                  <source src="/videos/db-video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </motion.div>
+            </motion.div>
+          </motion.section>
+
+          {/* SIH Team Section */}
+          <motion.section
+            className="bg-light dark:bg-[#121212] py-20 px-4 md:px-12 lg:px-32 text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <motion.div
+              className="mx-auto w-full max-w-3xl px-2"
+              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.7 }}
+            >
+              <img
+                src={sihfinal}
+                alt="SIH Final Team"
+                className="w-full rounded-lg shadow-md hover:shadow-2xl transition-all duration-500"
+              />
+            </motion.div>
+
+            <motion.h3
+              className="text-base md:text-lg font-semibold mt-6 text-gray-800 dark:text-gray-200"
+              variants={fadeUp}
+            >
+              The Team at the <br />
+              <span className="text-xl md:text-2xl font-bold text-black dark:text-white">
+                Smart India Hackathon 2024 Final
+              </span>
+            </motion.h3>
+          </motion.section>
+
+          {/* CTA Section */}
+          <motion.section
+            className="bg-light dark:bg-[#0e0e0e] border-t py-12 px-4 md:px-12 lg:px-32 text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <motion.p
+              className="text-sm md:text-base font-medium text-gray-500 dark:text-gray-400 mb-2"
+              variants={fadeUp}
+            >
+              Done Reading?
+            </motion.p>
+            <motion.h3
+              className="text-lg md:text-xl font-extrabold mb-6 text-black dark:text-gray-100"
+              variants={fadeUp}
+            >
+              Check out my other projects
+            </motion.h3>
+
+            <motion.div
+              className="flex flex-wrap justify-center gap-4"
+              variants={fadeUp}
+              custom={0.1}
+            >
+              {[
+                {
+                  href: "/aquavision",
+                  text: "AquaVision",
+                },
+                {
+                  href: "/clickshield",
+                  text: "ClickShield",
+                },
+              ].map((btn, i) => (
+                <motion.a
+                  key={i}
+                  href={btn.href}
+                  className="bg-[#141414] dark:bg-gray-600 text-white px-5 py-2 rounded-md text-sm md:text-base hover:bg-gray-800 dark:hover:bg-niceorange transition"
+                  whileHover={{ scale: 1.08, y: -4 }}
+                >
+                  {btn.text}
+                </motion.a>
+              ))}
+            </motion.div>
+          </motion.section>
+        </motion.section>
+      </div>
     </>
   );
 };
