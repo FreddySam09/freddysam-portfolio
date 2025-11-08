@@ -9,6 +9,7 @@ import sol1 from '../assets/img/aquavision/sol-1.png';
 import ai1 from '../assets/img/aquavision/ai-1.jpg';
 import ai2 from '../assets/img/aquavision/ai-2.jpg';
 import auvStruct from '../assets/img/aquavision/auv-struct.png';
+import auvStructDark from '../assets/img/aquavision/auv-struct-dark.png';
 import dashboard from '../assets/img/aquavision/dashboard.png';
 import dashboard1 from '../assets/img/aquavision/dashboard-1.png';
 import flow from '../assets/img/aquavision/flow.png';
@@ -18,6 +19,7 @@ import kurukwin from '../assets/img/aquavision/kuruk-win.jpg';
 import game1 from '../assets/img/digibridge/game-1.gif';
 import game2 from '../assets/img/digibridge/game-2.gif';
 import game3 from '../assets/img/digibridge/game-3.gif';
+import { useTheme } from '../context/ThemeContext';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
@@ -29,6 +31,7 @@ const fadeUp = {
 };
 
 const AquaVision = () => {
+  const { isDarkMode } = useTheme();
   return (
     <>
       <a
@@ -319,7 +322,7 @@ const AquaVision = () => {
         >
           <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10 dark:text-gray-100">Payload Features</h2>
           <motion.img
-            src={auvStruct}
+            src={isDarkMode ? auvStructDark : auvStruct}
             alt="AUV Structure"
             className="w-screen -mt-6 md:-mt-0 justify-center drop-shadow-2xl scale-130 md:scale-100"
             initial={{ opacity: 0, scale: 0.9 }}

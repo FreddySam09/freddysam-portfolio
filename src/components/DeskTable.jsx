@@ -18,9 +18,9 @@ import block from "../assets/img/block.png";
 import lamp from "../assets/img/lamp.png";
 import lampOn from "../assets/img/lamp-dark.png";
 import music from "../assets/audio/lofi.mp3";
-import InstaLogo from "../assets/icons/insta.svg?react";
 import MailLogo from "../assets/icons/mail.svg?react";
 import LinkedInLogo from "../assets/icons/LinkedInLogo.svg?react";
+import GithubLogo from "../assets/icons/github.svg?react"
 import picFrameHover from "../assets/img/pic-frame-hover.png";
 import picFrameHoverDark from "../assets/img/pic-frame-hover-dark.png";
 import frameNav from "../assets/img/frame-nav.png";
@@ -258,7 +258,7 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
         {isNavbarVisible ? (
           <div className="bg-lightgray rounded-md px-1 md:px-4 py-0 md:py-2 flex items-center gap-2 md:gap-3">
             <a href="https://www.instagram.com/sam.fredx/">
-              <InstaLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transition hover:text-niceorange hover:rotate-2" />
+              <GithubLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transition hover:text-niceorange hover:rotate-2" />
             </a>
             <a href="https://www.linkedin.com/in/freddy-samjacob/">
               <LinkedInLogo className="h-4 w-4 md:h-5 md:w-5 hover:scale-120 transitiondark:text-white hover:text-niceorange transition-colors duration-300" />
@@ -272,7 +272,7 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
             <div className="hidden md:block relative h-14 w-14 ml-1 md:ml-2 mb-1 z-0 group transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:-rotate-2">
               <img src={isDarkMode? blockDark : block} alt="Instagram block" className="h-full w-full object-contain" />
               <a href="https://www.instagram.com/sam.fredx/">
-                <InstaLogo className="absolute inset-0 m-auto h-7 w-7 transition-colors duration-300 group-hover:text-niceorange" />
+                <GithubLogo className="absolute inset-0 m-auto h-7 w-7 transition-colors duration-300 group-hover:text-niceorange" />
               </a>
             </div>
             <div className="hidden md:block relative h-14 w-14 -ml-5 -mr-4 mb-1 z-0 group transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:rotate-2">
