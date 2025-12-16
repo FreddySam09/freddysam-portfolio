@@ -12,6 +12,8 @@ import mascotGifDark from "./assets/gifs/mascot-gif-dark.gif";
 import AquaVisionGif from "./assets/gifs/aquavision-gif.gif";
 import VerboFixGif from "./assets/gifs/verbofix-gif.gif";
 import { useTheme } from "./context/ThemeContext";
+import SubstackSignup from "./components/SubstackSignup";
+import Substackcard from "./assets/img/substack-card.png"
 
 // 💤 Lazy load heavy pages
 const DigiBridgePage = lazy(() => import("./pages/DigiBridgePage"));
@@ -181,6 +183,36 @@ export default function App() {
                         ))}
                       </motion.div>
 
+                      <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.25 }}
+                      >
+                      <div className="mt-24 md:mt-32 flex flex-col md:flex-row items-center justify-center gap-2 px-4 max-w-6xl mx-auto mb-12">
+                        {/* Card: fixed square, never stretches */}
+                        <div className="flex-shrink-0 self-start items-center justify-center md:ml-10 md:-mb-0 -mb-15">
+                          <div className="w-full md:w-[350px] aspect-square">
+                            <a href="https://freddysam.substack.com/">
+                            <img
+                              src={Substackcard}
+                              alt="Substack preview"
+                              className="w-full h-full object-cover rounded-md shadow-sm hover:scale-105 hover:shadow-xl transition"
+                            />
+                            </a>
+                          </div>
+                        </div>
+
+                        {/* Signup: height synced to card */}
+                        <div className="w-full md:flex-1 md:-mt-30">
+                          <SubstackSignup />
+                        </div>
+
+                      </div>
+                      </motion.div>
+
+
+
+
                       {/* Divider */}
                       <div className="w-screen h-[1px] bg-gray-300 border-1 border-gray-200 mb-6"></div>
 
@@ -199,14 +231,21 @@ export default function App() {
 
                       <div className="flex flex-row md:items-start items-center md:justify-start justify-center md:text-start text-center md:ml-56">
                         <div className="md:text-lg text-md md:-mt-8 -mt-4 font-figtree text-gray-700 dark:text-gray-300 link-c">
-                          <a href="tel:+919360126618">+91 93601 26618</a>
+                          <div className="md:flex md:gap-2 -mb-6 md:-mb-8">
+                          <a href="tel:+919360126618">+91 93601 26618 </a>
+                          <p className="md:block hidden">|</p>
+                          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:7b1747a0-63e5-444b-b95c-9cc5f2146e79" className="md:block hidden link-c underline underline-offset-4 decoration-dotted decoration-1 hover:text-niceorange transition">Resume</a>
+                          </div>
                           <br />
                           <a
                             href="mailto:freddysamv@gmail.com"
-                            className="link-c underline underline-offset-4 decoration-dotted decoration-1"
+                            className="link-c underline underline-offset-4 decoration-dotted decoration-1 hover:text-niceorange transition"
                           >
                             freddysamv@gmail.com
                           </a>
+                          <br />
+                          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:7b1747a0-63e5-444b-b95c-9cc5f2146e79">
+                          <button className="bg-dark hover:bg-niceorange text-light hover:text-dark mt-4 text-md px-2 py-1 rounded-sm hover:rounded-md transition-all md:hidden">Resume</button></a>
                         </div>
                       </div>
                     </div>
