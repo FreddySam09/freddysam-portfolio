@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import heroImg from '../assets/img/digibridge/hero-img.png';
 import sihImg from '../assets/img/digibridge/sih.png';
+import sihImgDark from '../assets/img/digibridge/sih-dark.png';
 import prb1 from '../assets/img/digibridge/prb-1.png';
 import prb2 from '../assets/img/digibridge/prb-2.png';
 import prb3 from '../assets/img/digibridge/prb-3.png';
@@ -18,7 +19,7 @@ import sihfinal from '../assets/img/digibridge/sih-final.jpg';
 import game1 from '../assets/img/digibridge/game-1.gif';
 import game2 from '../assets/img/digibridge/game-2.gif';
 import game3 from '../assets/img/digibridge/game-3.gif';
-
+import { useTheme } from '../context/ThemeContext';
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: (i = 0) => ({
@@ -29,8 +30,9 @@ const fadeUp = {
 };
 
 const DigiBridgePage = () => {
+  const { isDarkMode } = useTheme();
   return (
-    <>
+    <div className='page-digibridge'>
       <a
         href="/"
         className="fixed top-8 md:top-6 left-4 md:left-6 z-50 flex items-center gap-2 text-xs md:text-sm font-figtree text-darkgray dark:text-gray-400 px-3 md:px-4 py-1 md:py-2 rounded-full hover:text-dark dark:hover:text-gray-100 hover:font-semibold transition-all duration-400"
@@ -65,7 +67,7 @@ const DigiBridgePage = () => {
                 variants={fadeUp}
               >
                 <p className="uppercase text-sm font-semibold tracking-widest dark:text-gray-200">DIGIBRIDGE</p>
-                <img src={sihImg} alt="Smart India Hackathon" className="w-20 md:w-24 lg:hidden" />
+                <img src={isDarkMode ? sihImgDark : sihImg} alt="Smart India Hackathon" className="w-20 md:w-24 lg:hidden" />
               </motion.div>
 
               <motion.h1
@@ -644,15 +646,14 @@ const DigiBridgePage = () => {
                   text: "AquaVision",
                 },
                 {
-                  href: "/clickshield",
-                  text: "ClickShield",
+                  href: "/verbofix",
+                  text: "VerboFix",
                 },
               ].map((btn, i) => (
                 <motion.a
                   key={i}
                   href={btn.href}
                   className="bg-[#141414] dark:bg-gray-600 text-white px-5 py-2 rounded-md text-sm md:text-base hover:bg-gray-800 dark:hover:bg-niceorange transition"
-                  whileHover={{ scale: 1.08, y: -4 }}
                 >
                   {btn.text}
                 </motion.a>
@@ -661,7 +662,7 @@ const DigiBridgePage = () => {
           </motion.section>
         </motion.section>
       </div>
-    </>
+    </div>
   );
 };
 

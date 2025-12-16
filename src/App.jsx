@@ -10,14 +10,14 @@ import CustomCursor from "./components/CustomCursor";
 import mascotGif from "./assets/gifs/mascot-gif.gif";
 import mascotGifDark from "./assets/gifs/mascot-gif-dark.gif";
 import AquaVisionGif from "./assets/gifs/aquavision-gif.gif";
-import ClickShieldGif from "./assets/gifs/clickshield-gif.gif";
+import VerboFixGif from "./assets/gifs/verbofix-gif.gif";
 import { useTheme } from "./context/ThemeContext";
 
 // 💤 Lazy load heavy pages
 const DigiBridgePage = lazy(() => import("./pages/DigiBridgePage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const AquaVision = lazy(() => import("./pages/AquaVision"));
-const ClickShieldPage = lazy(() => import("./pages/ClickShieldPage"));
+const VerboFixPage = lazy(() => import("./pages/VerboFixPage"));
 
 export default function App() {
   const [isDiceOpen, setIsDiceOpen] = useState(false);
@@ -152,17 +152,17 @@ export default function App() {
                             ],
                           },
                           {
-                            title: "ClickShield",
+                            title: "VerboFix",
                             from: "May 2024",
                             to: "Present",
-                            gif: ClickShieldGif,
-                            link: "/clickshield",
+                            gif: VerboFixGif,
+                            link: "/verbofix",
                             summary:
-                              "A Cybersecurity guardian browser extension that safeguards every click a user makes online.",
+                              "An innovative speech dysfluency detection and correction system designed to mitigate stuttering, integrating ML, and real life conversations.",
                             tags: [
-                              "Cybersecurity",
+                              "Web Platform",
                               "Product",
-                              "Browser Extension",
+                              "Social Welfare",
                             ],
                           },
                         ].map((project, i) => (
@@ -216,7 +216,7 @@ export default function App() {
               <Route path="/aboutme" element={<AboutPage />} />
               <Route path="/digibridge" element={<DigiBridgePage />} />
               <Route path="/aquavision" element={<AquaVision />} />
-              <Route path="/clickshield" element={<ClickShieldPage />} />
+              <Route path="/verbofix" element={<VerboFixPage />} />
             </Routes>
           </Suspense>
         </div>

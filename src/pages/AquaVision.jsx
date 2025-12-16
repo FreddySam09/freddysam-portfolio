@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import heroImg from '../assets/img/aquavision/hero-img.png';
 import kurukImg from '../assets/img/aquavision/kuruk.png';
+import kurukImgDark from '../assets/img/aquavision/kuruk-dark.png';
 import prb1 from '../assets/img/aquavision/prb-1.png';
 import prb2 from '../assets/img/aquavision/prb-2.png';
 import prb3 from '../assets/img/aquavision/prb-3.png';
@@ -33,7 +34,7 @@ const fadeUp = {
 const AquaVision = () => {
   const { isDarkMode } = useTheme();
   return (
-    <>
+    <div className='page-aquavision'>
       <a
         href="/"
         className="fixed top-8 md:top-6 left-4 md:left-6 z-50 flex items-center gap-2 text-xs md:text-sm font-figtree text-darkgray dark:text-gray-400 px-3 md:px-4 py-1 md:py-2 rounded-full hover:text-dark dark:hover:text-gray-100 hover:font-semibold transition-all duration-400"
@@ -70,8 +71,8 @@ const AquaVision = () => {
               <div className="flex justify-between items-center">
                 <p className="uppercase text-sm font-semibold tracking-widest dark:text-gray-200">AQUAVISION</p>
                 <img
-                  src={kurukImg}
-                  alt="Smart India Hackathon"
+                  src={isDarkMode ? kurukImgDark : kurukImg}
+                  alt="Kurukshetra"
                   className="w-20 md:w-24 lg:hidden"
                 />
               </div>
@@ -551,7 +552,7 @@ const AquaVision = () => {
             <motion.img
               src={kurukwin}
               alt="Kurukshetra Team"
-              className="w-full rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+              className="w-full rounded-lg shadow-md transition-transform duration-300"
               whileInView={{ opacity: 1, scale: 1 }}
               initial={{ opacity: 0, scale: 0.9 }}
             />
@@ -587,15 +588,15 @@ const AquaVision = () => {
               DigiBridge
             </a>
             <a
-              href="/clickshield"
+              href="/verbofix"
               className="bg-black dark:bg-gray-600 text-white px-5 py-2 rounded-md text-sm md:text-base hover:bg-gray-800 dark:hover:bg-niceorange transition"
             >
-              ClickShield
+              VerboFix
             </a>
           </motion.div>
         </motion.section>
       </div>
-    </>
+    </div>
   );
 };
 

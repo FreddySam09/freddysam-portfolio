@@ -260,3 +260,18 @@ html, body {
 svg, svg path {
   transition: fill 0s ease-in-out, stroke 0s ease-in-out, color 0s ease-in-out;
 }
+
+.page-verbofix ::selection {
+  background-color: #518b5b; /* mint */
+  color: #e4efc4;
+}
+
+.page-digibridge ::selection {
+  background-color: #6b518b; /* mint */
+  color: #e4e4e4;
+}
+
+.page-aquavision ::selection {
+  background-color: #2f7996; /* mint */
+  color: #e4e4e4;
+}

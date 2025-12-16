@@ -105,7 +105,7 @@ const AboutPage = () => {
 
       <div className='text-center items-center justify-center mt-21'>
         <h1 className='font-semibold font-figtree mt-36 md:mt-0 md:text-3xl text-2xl text-dark'>An Artist Turned Developer</h1>
-        <h1 className='font-medium font-figtree md:text-xl text-lg leading-5 text-gray-600'>
+        <h1 className='font-medium font-figtree md:text-xl text-lg leading-5 text-gray-600 dark:text-gray-200'>
           Addicted to Building Applications that <br /><span className='font-bold mt-1'>Stand out from the rest</span>
         </h1>
       </div>

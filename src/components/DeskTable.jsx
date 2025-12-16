@@ -117,7 +117,7 @@ export default function DeskTable({ onDiceClick, isNavbarVisible }) {
             alt="mascot gif"
             className={`object-contain transition-all duration-700 ease-in-out ${
               isNavbarVisible 
-                ? "h-8 w-8 md:h-13 md:w-13 mt-4 md:mt-5"  
+                ? "h-8 w-8 md:h-13 md:w-13 mt-6 md:mt-5"  
                 : `h-[calc(10vw+20px)] w-[calc(10vw+20px)] md:h-24 md:w-24 ${isMascotHovered ? "scale-110" : "scale-100"}`
             }`}
           />
