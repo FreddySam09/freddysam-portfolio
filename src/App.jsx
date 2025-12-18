@@ -13,7 +13,12 @@ import AquaVisionGif from "./assets/gifs/aquavision-gif.gif";
 import VerboFixGif from "./assets/gifs/verbofix-gif.gif";
 import { useTheme } from "./context/ThemeContext";
 import SubstackSignup from "./components/SubstackSignup";
-import Substackcard from "./assets/img/substack-card.png"
+import Substackcard from "./assets/img/substack-card.png";
+import HashNodeBlogVerboFix from "./assets/img/creating-verbofix.png";
+import HashNodeLogo from "./assets/icons/hashnode-logo.png"
+import GithubLogo from "./assets/icons/github-logo.png"
+import SubstackLogo from "./assets/icons/substack-logo.png"
+import LinkedInLogo from "./assets/icons/linkedin-logo.png"
 
 // 💤 Lazy load heavy pages
 const DigiBridgePage = lazy(() => import("./pages/DigiBridgePage"));
@@ -183,6 +188,28 @@ export default function App() {
                         ))}
                       </motion.div>
 
+                      {/* Divider */}
+                      <div className="w-screen h-[1px] bg-gray-300 border-1 border-gray-200 mb-6"></div>
+                      
+                      <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.25 }}
+                      >
+                      <div className="flex flex-col items-center justify-center">
+                        <h1 className="text-dark text-4xl font-semibold font-figtree justify-center mt-8 mb-12">My Blogs</h1>
+                        <a href="https://freddysam.hashnode.dev/creating-verbofix">
+                          <div className="flex md:flex-row flex-col md:gap-8 items-center md:mx-24 hover:scale-105 transition">                            
+                          <img src={HashNodeBlogVerboFix} alt="" className="w-120 rounded-md border border-gray-300 mb-4 md:mb-0"/>
+                          <div className="flex flex-col gap-2">
+                            <h1 className="text-dark text-2xl md:text-4xl font-figtree font-bold">Creating VerboFix: From a College ML Project to a Human-Centric Speech Therapy Platform</h1>
+                            <p className="font-figtree text-lg md:text-xl text-gray-700 dark:text-gray-300">How a few classmates, a half-working ML model, and a lot of late-night decisions turned into something much bigger</p>
+                          </div>
+                        </div>
+                        </a>
+                      </div>
+                      </motion.div>
+
                       <motion.div
                         initial="hidden"
                         whileInView="visible"
@@ -203,31 +230,30 @@ export default function App() {
                         </div>
 
                         {/* Signup: height synced to card */}
-                        <div className="w-full md:flex-1 md:-mt-30">
+                        <div className="w-full md:flex-1 md:-mt-30 normal-c">
                           <SubstackSignup />
                         </div>
 
                       </div>
                       </motion.div>
 
-
-
-
                       {/* Divider */}
                       <div className="w-screen h-[1px] bg-gray-300 border-1 border-gray-200 mb-6"></div>
 
                       {/* Contact Section */}
-                      <div className="flex flex-row md:items-start items-center md:justify-start justify-center md:text-start text-center">
-                        <img
-                          src={isDarkMode ? mascotGifDark : mascotGif}
-                          alt="mascot"
-                          className="w-18 md:w-22 md:ml-32 md:mt-8 mt-4"
-                        />
-                        <div className="md:text-start text-center md:justify-start justify-center md:ml-2 mt-4 md:mt-8 text-dark text-4xl md:text-5xl font-sue">
-                          Wanna connect
-                          <span className="text-niceorange"> ???</span>
+                      <div className="flex flex-col gap-10 items-center justify-center md:flex-row mt-7 md:gap-90 md:-ml-36">
+                        <div className="flex-col">
+                          <div className="flex flex-row md:items-start items-center md:justify-start justify-center md:text-start text-center">
+                            <img
+                              src={isDarkMode ? mascotGifDark : mascotGif}
+                              alt="mascot"
+                              className="w-18 md:w-22 md:ml-32 md:mt-8 mt-4"
+                            />
+                            <div className="md:text-start text-center md:justify-start justify-center md:ml-2 mt-4 md:mt-8 text-dark text-4xl md:text-5xl font-sue">
+                              Wanna connect
+                              <span className="text-niceorange"> ???</span>
+                            </div>
                         </div>
-                      </div>
 
                       <div className="flex flex-row md:items-start items-center md:justify-start justify-center md:text-start text-center md:ml-56">
                         <div className="md:text-lg text-md md:-mt-8 -mt-4 font-figtree text-gray-700 dark:text-gray-300 link-c">
@@ -248,6 +274,16 @@ export default function App() {
                           <button className="bg-dark hover:bg-niceorange text-light hover:text-dark mt-4 text-md px-2 py-1 rounded-sm hover:rounded-md transition-all md:hidden">Resume</button></a>
                         </div>
                       </div>
+                        </div>
+                        
+                        <div className="flex gap-8">
+                          <img src={HashNodeLogo} alt="" className="md:w-8 w-6 h-6 md:h-8"/>
+                          <img src={GithubLogo} alt="" className="md:w-8 w-6 h-6 md:h-8"/>
+                          <img src={SubstackLogo} alt="" className="md:w-8 w-6 h-6 md:h-8"/>
+                          <img src={LinkedInLogo} alt="" className="md:w-8 w-6 h-6 md:h-8"/>
+                        </div>
+                      </div>
+                      
                     </div>
                   </div>
                 }
