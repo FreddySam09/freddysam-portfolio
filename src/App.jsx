@@ -196,7 +196,7 @@ export default function App() {
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.25 }}
                       >
-                      <div className="flex flex-col items-center justify-center">
+                      <div className="flex flex-col items-center justify-center mx-8 md:mx-2">
                         <h1 className="text-dark text-4xl font-semibold font-figtree justify-center mt-8 mb-12">My Blogs</h1>
                         <a href="https://freddysam.hashnode.dev/creating-verbofix">
                           <div className="flex md:flex-row flex-col md:gap-8 items-center md:mx-24 hover:scale-105 transition">                            
