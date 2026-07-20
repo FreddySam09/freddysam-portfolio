@@ -191,24 +191,6 @@ export default function App() {
                       {/* Divider */}
                       <div className="w-screen h-[1px] bg-gray-300 border-1 border-gray-200 mb-6"></div>
                       
-                      <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.25 }}
-                      >
-                      <div className="flex flex-col items-center justify-center mx-8 md:mx-2">
-                        <h1 className="text-dark text-4xl font-semibold font-figtree justify-center mt-8 mb-12">My Blogs</h1>
-                        <a href="https://freddysam.hashnode.dev/creating-verbofix">
-                          <div className="flex md:flex-row flex-col md:gap-8 items-center md:mx-24 hover:scale-105 transition">                            
-                          <img src={HashNodeBlogVerboFix} alt="" className="w-120 rounded-md border border-gray-300 mb-4 md:mb-0"/>
-                          <div className="flex flex-col gap-2">
-                            <h1 className="text-dark text-2xl md:text-4xl font-figtree font-bold">Creating VerboFix: From a College ML Project to a Human-Centric Speech Therapy Platform</h1>
-                            <p className="font-figtree text-lg md:text-xl text-gray-700 dark:text-gray-300">How a few classmates, a half-working ML model, and a lot of late-night decisions turned into something much bigger</p>
-                          </div>
-                        </div>
-                        </a>
-                      </div>
-                      </motion.div>
 
                       <motion.div
                         initial="hidden"

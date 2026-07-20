@@ -16,6 +16,8 @@ import BlenderIcon from '../assets/img/blender-icon.png';
 import NiotLogo from '../assets/img/niot-logo.png';
 import NanotchnologiesLogo from '../assets/img/nanotechnology-logo.png';
 import IeeeLogo from '../assets/img/ieee-logo.png';
+import AzureLogo from '../assets/img/azure-icon.png';
+import MBGLogo from '../assets/img/m365-icon.png';
 import Frontend from '../assets/img/frontend.svg';
 import Backend from '../assets/img/backend.svg';
 import UiUx from '../assets/img/ui-ux.svg';
@@ -31,14 +33,15 @@ const skills = [
   { src: NextIcon, label: "Next.js" },
   { src: JavascriptIcon, label: "JavaScript" },
   { src: PythonIcon, label: "Python" },
+  { src: AzureLogo, label: "Azure" },
   { src: FigmaIcon, label: "Figma" },
   { src: TailwindIcon, label: "Tailwind CSS" },
-  { src: NotionIcon, label: "Notion" },
   { src: ThreeIcon, label: "Three.js" },
   { src: PlaycanvasIcon, label: "PlayCanvas" },
   { src: IllustratorIcon, label: "Illustrator" },
   { src: BlenderIcon, label: "Blender" },
-  { src: PhotoshopIcon, label: "Photoshop" }
+  { src: PhotoshopIcon, label: "Photoshop" },
+  { src: MBGLogo, label: "Microsoft Business Group"}
 ];
 
 const experienceData = [
