@@ -117,7 +117,7 @@ export default function StickyNotesSection() {
       />
 
       {/* Text inside sticky note */}
-      <div className="absolute top-[160px] md:top-[225px] right-[60px] md:right-[193px] text-[10px] md:text-[13px] leading-snug text-black w-[100px] md:w-[150px] font-medium font-figtree z-10">
+      <div className="absolute top-[168px] md:top-[225px] right-[60px] md:right-[193px] text-[10px] md:text-[13px] leading-snug text-black w-[100px] md:w-[150px] font-medium font-figtree z-10">
         Intern @ <br />
         Cognizant Technology Solutions <br />
       </div>

@@ -67,7 +67,7 @@ const skills = [
   { src: IllustratorIcon, label: "Illustrator" },
   { src: BlenderIcon, label: "Blender" },
   { src: PhotoshopIcon, label: "Photoshop" },
-  { src: MBGLogo, label: "Microsoft Business Group"}
+  { src: MBGLogo, label: "M365"}
 ];
 
 const AboutPage = () => {
@@ -106,8 +106,9 @@ const AboutPage = () => {
         Spin my card around till u see me
       </p>
 
-      {/* About Text */}
+      <p className='md:hidden block animate-bounce'><p className='text-center mt-12 -mb-16 text-2xl text-gray-600 dark:text-gray-400 animate-pulse'>↓</p></p>
 
+      {/* About Text */}
       <div className='text-center items-center justify-center mt-21'>
         <h1 className='font-semibold font-figtree mt-36 md:mt-0 md:text-3xl text-2xl text-dark'>An Artist Turned Developer</h1>
         <h1 className='font-medium font-figtree md:text-xl text-lg leading-5 text-gray-600 dark:text-gray-200'>

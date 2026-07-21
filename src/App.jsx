@@ -259,10 +259,10 @@ export default function App() {
                         </div>
                         
                         <div className="flex gap-8">
-                          <img src={HashNodeLogo} alt="" className="md:w-8 w-6 h-6 md:h-8"/>
-                          <img src={GithubLogo} alt="" className="md:w-8 w-6 h-6 md:h-8"/>
-                          <img src={SubstackLogo} alt="" className="md:w-8 w-6 h-6 md:h-8"/>
-                          <img src={LinkedInLogo} alt="" className="md:w-8 w-6 h-6 md:h-8"/>
+                          <a href="https://freddysam.hashnode.dev/"><img src={HashNodeLogo} alt="" className="md:w-8 w-6 h-6 md:h-8 hover:scale-120 hover:rotate-12 hover:opacity-80 transition-all"/></a>
+                          <a href="https://github.com/FreddySam09"><img src={GithubLogo} alt="" className="md:w-8 w-6 h-6 md:h-8 hover:scale-120 hover:rotate-12 hover:opacity-80 transition-all"/></a>
+                          <a href="https://freddysam.substack.com"><img src={SubstackLogo} alt="" className="md:w-8 w-6 h-6 md:h-8 hover:scale-120 hover:rotate-12 hover:opacity-80 transition-all"/></a>
+                          <a href="https://www.linkedin.com/in/freddy-samjacob/"><img src={LinkedInLogo} alt="" className="md:w-8 w-6 h-6 md:h-8 hover:scale-120 hover:rotate-12 hover:opacity-80 transition-all"/></a>
                         </div>
                       </div>
                       
