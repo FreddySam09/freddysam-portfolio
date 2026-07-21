@@ -27,6 +27,32 @@ import BackendDark from '../assets/img/backend-dark.svg';
 import UiUxDark from '../assets/img/ui-ux-dark.svg';
 import GraphicDesignDark from '../assets/img/graphic-design-dark.svg';
 import { useTheme } from '../context/ThemeContext';
+import CognizantLogo from "../assets/img/cognizant-logo.png";
+
+const experiences = [
+  {
+    logo: NiotLogo,
+    company: "National Institute of Ocean Technology",
+    role: "Student Intern",
+    duration: "Apr 2024 – May 2024",
+    description: [
+      "Worked on Autonomous Underwater Vehicle (AUV) communication protocols.",
+      "Developed monitoring dashboards for underwater operations.",
+      "Collaborated with researchers on real-world marine technology projects."
+    ]
+  },
+  {
+    logo: CognizantLogo,
+    company: "Cognizant",
+    role: "Intern",
+    duration: "2025",
+    description: [
+      "Worked with Microsoft Azure cloud services.",
+      "Explored Microsoft 365 ecosystem and enterprise solutions.",
+      "Built practical experience with cloud-based technologies and corporate infrastructure integration."
+    ]
+  }
+];
 
 const skills = [
   { src: ReactIcon, label: "React.js" },
@@ -42,30 +68,6 @@ const skills = [
   { src: BlenderIcon, label: "Blender" },
   { src: PhotoshopIcon, label: "Photoshop" },
   { src: MBGLogo, label: "Microsoft Business Group"}
-];
-
-const experienceData = [
-  {
-    logo: NiotLogo,
-    role: "Student Intern",
-    company: "National Institute Of Ocean Technology",
-    duration: "April 2024 – May 2024",
-    description: "Hands-on working Experience on AUV Communication Protocols & Developing User Dashboards for Underwater Operations."
-  },
-  {
-    logo: NanotchnologiesLogo,
-    role: "Factory Intern",
-    company: "Nanotechnologies Pvt Ltd.",
-    duration: "July 2024 – August 2024",
-    description: "Hands on Experience with Control Systems, dashboard integration and PLC Programming in industry scale automation systems."
-  },
-  {
-    logo: IeeeLogo,
-    role: "Webmaster",
-    company: "IEEE Magnetics Society Student Chapter",
-    duration: "2022 – Present",
-    description: "Designed and managed the official webpage of the the Student Chapter of IEEE Magnetics Society of Sri Sairam Engineering College."
-  }
 ];
 
 const AboutPage = () => {
@@ -146,7 +148,10 @@ const AboutPage = () => {
       </div>
 
       {/* Services Section */}
-      <h1 className='text-center text-dark font-bold text-2xl mt-16 mb-8'>SERVICES</h1>
+      <h1 className='text-center text-dark font-bold text-2xl mt-16'>SERVICES</h1>
+      <p className="mt-2 text-gray-500 dark:text-gray-300 text-center mb-14">
+        Places where I transformed learning into real-world impact.
+      </p>
       <div className='flex flex-col justify-center items-center gap-6 max-w-7xl mx-auto px-4 md:px-6'>
         <div className='flex flex-col md:flex-row gap-12 items-center justify-center'>
         {/* Frontend */}
@@ -185,6 +190,115 @@ const AboutPage = () => {
         </div>
         </div>
       </div>
+      {/* EXPERIENCE */}
+
+    <section className="max-w-6xl mx-auto px-6 mt-28 mb-24">
+
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: .6 }}
+            className="text-center"
+        >
+
+            <h2 className="text-2xl font-bold text-dark">
+                EXPERIENCE
+            </h2>
+
+            <p className="mt-2 text-gray-500 dark:text-gray-300">
+                Places where I transformed learning into real-world impact.
+            </p>
+
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8 mt-14">
+
+            {experiences.map((exp, index) => (
+
+                <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                        duration: .5,
+                        delay: index * .15
+                    }}
+                    whileHover={{
+                        y: -8
+                    }}
+                    className="
+                    rounded-3xl
+                    border
+                    border-gray-200
+                    dark:border-zinc-700
+                    bg-white/70
+                    dark:bg-zinc-900/70
+                    backdrop-blur-xl
+                    shadow-sm
+                    hover:shadow-2xl
+                    transition-all
+                    duration-300
+                    p-8
+                    "
+
+                >
+
+                    <div className="flex items-center gap-5">
+
+                        <img
+                            src={exp.logo}
+                            alt={exp.company}
+                            className="w-16 h-16 object-contain"
+                        />
+
+                        <div>
+
+                            <h3 className="text-2xl font-bold text-dark">
+                                {exp.role}
+                            </h3>
+
+                            <p className="font-medium text-gray-700 dark:text-gray-300">
+                                {exp.company}
+                            </p>
+
+                            <span className="text-sm text-gray-500">
+                                {exp.duration}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div className="mt-6 space-y-3">
+
+                        {exp.description.map((point, i) => (
+
+                            <div
+                                key={i}
+                                className="flex items-start gap-3"
+                            >
+
+                                <div className="w-2 h-2 mt-2 rounded-full bg-blue-500"/>
+
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                    {point}
+                                </p>
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                </motion.div>
+
+            ))}
+
+        </div>
+
+    </section>
     </>
   );
 };
