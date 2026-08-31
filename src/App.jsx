@@ -242,7 +242,7 @@ export default function App() {
                           <div className="md:flex md:gap-2 -mb-6 md:-mb-8">
                           <a href="tel:+919360126618">+91 93601 26618 </a>
                           <p className="md:block hidden">|</p>
-                          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:7b1747a0-63e5-444b-b95c-9cc5f2146e79" className="md:block hidden link-c underline underline-offset-4 decoration-dotted decoration-1 hover:text-niceorange transition">Resume</a>
+                          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:71e0d6c8-943a-4677-9817-8c27f17cc699" className="md:block hidden link-c underline underline-offset-4 decoration-dotted decoration-1 hover:text-niceorange transition">Resume</a>
                           </div>
                           <br />
                           <a
@@ -252,7 +252,7 @@ export default function App() {
                             freddysamv@gmail.com
                           </a>
                           <br />
-                          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:7b1747a0-63e5-444b-b95c-9cc5f2146e79">
+                          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:71e0d6c8-943a-4677-9817-8c27f17cc699">
                           <button className="bg-dark hover:bg-niceorange text-light hover:text-dark mt-4 text-md px-2 py-1 rounded-sm hover:rounded-md transition-all md:hidden">Resume</button></a>
                         </div>
                       </div>
