@@ -15,10 +15,11 @@ import { useTheme } from "./context/ThemeContext";
 import SubstackSignup from "./components/SubstackSignup";
 import Substackcard from "./assets/img/substack-card.png";
 import HashNodeBlogVerboFix from "./assets/img/creating-verbofix.png";
-import HashNodeLogo from "./assets/icons/hashnode-logo.png"
-import GithubLogo from "./assets/icons/github-logo.png"
-import SubstackLogo from "./assets/icons/substack-logo.png"
-import LinkedInLogo from "./assets/icons/linkedin-logo.png"
+import HashNodeLogo from "./assets/icons/hashnode-logo.png";
+import GithubLogo from "./assets/icons/github-logo.png";
+import SubstackLogo from "./assets/icons/substack-logo.png";
+import LinkedInLogo from "./assets/icons/linkedin-logo.png";
+import PosterArchive from "./components/PosterArchive";
 
 // 💤 Lazy load heavy pages
 const DigiBridgePage = lazy(() => import("./pages/DigiBridgePage"));
@@ -187,6 +188,8 @@ export default function App() {
                           </motion.div>
                         ))}
                       </motion.div>
+
+                      <PosterArchive />
 
                       {/* Divider */}
                       <div className="w-screen h-[1px] bg-gray-300 border-1 border-gray-200 mb-6"></div>
