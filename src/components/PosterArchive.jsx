@@ -550,8 +550,6 @@ export default function PosterArchive() {
       >
         <div className="relative">
 
-          {/* Poster thumbnail */}
-
           <img
             src={poster.thumbnail}
             alt={poster.title}
@@ -565,8 +563,6 @@ export default function PosterArchive() {
               shadow-[0_18px_45px_rgba(0,0,0,0.16)]
             "
           />
-
-          {/* Active poster information */}
 
           <AnimatePresence>
 
@@ -673,7 +669,7 @@ export default function PosterArchive() {
         relative
 
         py-16
-        md:py-24
+        md:py-16
 
         px-4
         md:px-10
@@ -744,7 +740,7 @@ export default function PosterArchive() {
             font-bold
 
             text-4xl
-            md:text-5xl
+            md:text-4xl
 
             tracking-tight
           "
@@ -775,7 +771,7 @@ export default function PosterArchive() {
           CATEGORY NAVIGATION
       ===================================================== */}
 
-      <div className="relative z-10 max-w-7xl mx-auto mt-12 md:mt-16">
+      <div className="relative z-10 max-w-7xl mx-auto mt-12 md:mt-10">
 
         <div
           className="
@@ -784,7 +780,22 @@ export default function PosterArchive() {
           "
         >
 
-          <div className="flex overflow-x-auto">
+          <div
+            className="
+              flex
+              justify-start
+              md:justify-center
+
+              overflow-x-auto
+              overflow-y-visible
+
+              w-full
+              max-w-full
+
+              px-1
+              md:px-0
+            "
+          >
 
             {archive.map((category) => {
               const isActive =
@@ -803,15 +814,17 @@ export default function PosterArchive() {
 
                   className={`
                     relative
+                    items-center
+                    justify-center
 
                     min-w-[165px]
-                    md:min-w-[200px]
+                    md:min-w-[175px]
 
                     px-5
-                    md:px-7
+                    md:px-5
 
                     py-5
-                    md:py-7
+                    md:py-5
 
                     text-left
 
@@ -922,7 +935,7 @@ export default function PosterArchive() {
               justify-between
 
               gap-5
-              mt-7
+              mt-5
             "
           >
 
@@ -950,7 +963,7 @@ export default function PosterArchive() {
                   font-bold
 
                   text-3xl
-                  md:text-5xl
+                  md:text-4xl
 
                   mt-2
                 "
@@ -1012,10 +1025,10 @@ export default function PosterArchive() {
             mx-auto
 
             mt-8
-            md:mt-10
+            md:mt-6
 
             h-[420px]
-            md:h-[560px]
+            md:h-[430px]
           "
         >
 
@@ -1027,8 +1040,6 @@ export default function PosterArchive() {
             "illustrative" && (
 
             <>
-
-              {/* Vengeance Trilogy cluster */}
 
               <div
                 className="
@@ -1071,8 +1082,6 @@ export default function PosterArchive() {
                 )}
 
               </div>
-
-              {/* He Is The Light */}
 
               {currentCategory.items.map(
                 (poster, index) => {
@@ -1118,8 +1127,6 @@ export default function PosterArchive() {
                       posterPositions.length
                   ];
 
-                /* Single poster */
-
                 if (
                   visiblePosters.length ===
                   1
@@ -1137,8 +1144,6 @@ export default function PosterArchive() {
                     },
                   };
                 }
-
-                /* Two posters */
 
                 if (
                   visiblePosters.length ===
@@ -1213,14 +1218,10 @@ export default function PosterArchive() {
                 "
               >
 
-                {/* Background close area */}
-
                 <div
                   className="absolute inset-0"
                   onClick={closePoster}
                 />
-
-                {/* Preview */}
 
                 <motion.div
                   key={selectedPoster.id}
@@ -1262,8 +1263,6 @@ export default function PosterArchive() {
                     md:py-6
                   "
                 >
-
-                  {/* Top bar */}
 
                   <div
                     className="
@@ -1342,8 +1341,6 @@ export default function PosterArchive() {
 
                   </div>
 
-                  {/* Image area */}
-
                   <div
                     className="
                       relative
@@ -1360,8 +1357,6 @@ export default function PosterArchive() {
                       md:px-20
                     "
                   >
-
-                    {/* Full image loading state */}
 
                     <AnimatePresence>
 
@@ -1450,8 +1445,6 @@ export default function PosterArchive() {
 
                     </AnimatePresence>
 
-                    {/* Full PNG */}
-
                     <img
                       key={selectedPoster.id}
 
@@ -1488,8 +1481,6 @@ export default function PosterArchive() {
                         }
                       `}
                     />
-
-                    {/* Previous */}
 
                     {visiblePosters.length > 1 && (
 
@@ -1530,8 +1521,6 @@ export default function PosterArchive() {
                       </button>
 
                     )}
-
-                    {/* Next */}
 
                     {visiblePosters.length > 1 && (
 
@@ -1574,8 +1563,6 @@ export default function PosterArchive() {
                     )}
 
                   </div>
-
-                  {/* Bottom category */}
 
                   <div
                     className="
