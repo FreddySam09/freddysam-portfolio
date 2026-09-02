@@ -20,6 +20,8 @@ import GithubLogo from "./assets/icons/github-logo.png";
 import SubstackLogo from "./assets/icons/substack-logo.png";
 import LinkedInLogo from "./assets/icons/linkedin-logo.png";
 import PosterArchive from "./components/PosterArchive";
+import LoadingScreen from "./pages/LoadingScreen";
+import usePageLoader from "./context/PageLoader";
 
 // 💤 Lazy load heavy pages
 const DigiBridgePage = lazy(() => import("./pages/DigiBridgePage"));
@@ -33,6 +35,7 @@ export default function App() {
   const deskRef = useRef(null);
 
   const { isDarkMode } = useTheme();
+  const { isLoading } = usePageLoader();
 
   // Navbar visibility logic — trigger when table hits top of viewport
   useEffect(() => {
@@ -73,10 +76,17 @@ export default function App() {
 
   return (
     <Router>
-      {/* LazyMotion makes framer-motion load animations only when needed */}
-      <LazyMotion features={domAnimation}>
-        <div className="relative custom-cursor-active overflow-x-hidden">
-          <CustomCursor />
+    <LazyMotion features={domAnimation}>
+      {isLoading && <LoadingScreen />}
+
+      <div
+        className={`relative custom-cursor-active overflow-x-hidden transition-opacity duration-300 ${
+          isLoading
+            ? "opacity-0 pointer-events-none"
+            : "opacity-100"
+        }`}
+      >
+        <CustomCursor />
           <Suspense
             fallback={
               <div className="flex h-screen items-center justify-center text-gray-500 dark:text-gray-300 font-figtree">

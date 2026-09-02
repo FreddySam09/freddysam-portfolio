@@ -2,22 +2,42 @@ import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 /* =========================================================
-   IMPORT DESIGNS
+   FULL DESIGNS
+   Original PNGs — only used in the full preview
 ========================================================= */
 
-import messi from "../assets/img/posters/messi.png";
+import messiFull from "../assets/img/posters/messi.png";
 
-import mrVengeance from "../assets/img/posters/mr-vengeance.png";
-import oldboy from "../assets/img/posters/oldboy.png";
-import ladyVengeance from "../assets/img/posters/lady-vengeance.png";
-import heIsTheLight from "../assets/img/posters/he-is-the-light.png";
+import mrVengeanceFull from "../assets/img/posters/mr-vengeance.png";
+import oldboyFull from "../assets/img/posters/oldboy.png";
+import ladyVengeanceFull from "../assets/img/posters/lady-vengeance.png";
+import heIsTheLightFull from "../assets/img/posters/he-is-the-light.png";
 
-import boysDontCry from "../assets/img/posters/boys-dont-cry.png";
+import boysDontCryFull from "../assets/img/posters/boys-dont-cry.png";
 
-import spiderverse from "../assets/img/posters/spiderverse.png";
+import spiderverseFull from "../assets/img/posters/spiderverse.png";
 
-import mrMorale from "../assets/img/posters/mr-morale.png";
-import VettelPoster from "../assets/img/posters/vettel.png";
+import mrMoraleFull from "../assets/img/posters/mr-morale.png";
+import VettelPosterFull from "../assets/img/posters/vettel.png";
+
+/* =========================================================
+   THUMBNAILS
+   Lightweight WebPs — used in draggable archive
+========================================================= */
+
+import messiThumb from "../assets/img/posters/thumbnails/messi.webp";
+
+import mrVengeanceThumb from "../assets/img/posters/thumbnails/mr-vengeance.webp";
+import oldboyThumb from "../assets/img/posters/thumbnails/oldboy.webp";
+import ladyVengeanceThumb from "../assets/img/posters/thumbnails/lady-vengeance.webp";
+import heIsTheLightThumb from "../assets/img/posters/thumbnails/he-is-the-light.webp";
+
+import boysDontCryThumb from "../assets/img/posters/thumbnails/boys-dont-cry.webp";
+
+import spiderverseThumb from "../assets/img/posters/thumbnails/spiderverse.webp";
+
+import mrMoraleThumb from "../assets/img/posters/thumbnails/mr-morale.webp";
+import VettelPosterThumb from "../assets/img/posters/thumbnails/vettel.webp";
 
 /* =========================================================
    ARCHIVE DATA
@@ -35,7 +55,8 @@ const archive = [
     items: [
       {
         id: "messi",
-        src: messi,
+        thumbnail: messiThumb,
+        full: messiFull,
         title: "Messi",
         year: "2026",
         category: "Mixed Media Design",
@@ -60,7 +81,8 @@ const archive = [
         items: [
           {
             id: "mr-vengeance",
-            src: mrVengeance,
+            thumbnail: mrVengeanceThumb,
+            full: mrVengeanceFull,
             title: "Sympathy for Mr. Vengeance",
             year: "2026",
             category: "Illustrative Design",
@@ -83,7 +105,8 @@ const archive = [
 
           {
             id: "oldboy",
-            src: oldboy,
+            thumbnail: oldboyThumb,
+            full: oldboyFull,
             title: "Oldboy",
             year: "2026",
             category: "Illustrative Design",
@@ -106,7 +129,8 @@ const archive = [
 
           {
             id: "lady-vengeance",
-            src: ladyVengeance,
+            thumbnail: ladyVengeanceThumb,
+            full: ladyVengeanceFull,
             title: "Lady Vengeance",
             year: "2026",
             category: "Illustrative Design",
@@ -133,7 +157,8 @@ const archive = [
     items: [
       {
         id: "he-is-the-light",
-        src: heIsTheLight,
+        thumbnail: heIsTheLightThumb,
+        full: heIsTheLightFull,
         title: "He Is the Light",
         year: "2026",
         category: "Illustrative Design",
@@ -152,7 +177,8 @@ const archive = [
     items: [
       {
         id: "boys-dont-cry",
-        src: boysDontCry,
+        thumbnail: boysDontCryThumb,
+        full: boysDontCryFull,
         title: "Boys Don't Cry / Blonde",
         year: "2026",
         category: "Moodboard Design",
@@ -171,7 +197,8 @@ const archive = [
     items: [
       {
         id: "spiderverse",
-        src: spiderverse,
+        thumbnail: spiderverseThumb,
+        full: spiderverseFull,
         title: "Into the Spider-Verse",
         year: "2026",
         category: "Collage",
@@ -190,7 +217,8 @@ const archive = [
     items: [
       {
         id: "mr-morale",
-        src: mrMorale,
+        thumbnail: mrMoraleThumb,
+        full: mrMoraleFull,
         title: "Mr. Morale",
         year: "2026",
         category: "Poster Design",
@@ -198,7 +226,8 @@ const archive = [
 
       {
         id: "vettel",
-        src: VettelPoster,
+        thumbnail: VettelPosterThumb,
+        full: VettelPosterFull,
         title: "Sebastian Vettel",
         year: "2026",
         category: "Poster Design",
@@ -261,6 +290,9 @@ export default function PosterArchive() {
 
   const [selectedPoster, setSelectedPoster] =
     useState(null);
+
+  const [isFullImageLoading, setIsFullImageLoading] =
+    useState(false);
 
   /* =======================================================
      MOBILE DETECTION
@@ -337,6 +369,7 @@ export default function PosterArchive() {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setSelectedPoster(null);
+        setIsFullImageLoading(false);
       }
     };
 
@@ -361,15 +394,26 @@ export default function PosterArchive() {
     setActiveCategory(id);
     setActivePoster(null);
     setSelectedPoster(null);
+    setIsFullImageLoading(false);
   };
 
   /* =======================================================
-     OPEN POSTER
+     OPEN FULL POSTER
   ======================================================= */
 
   const openPoster = (poster) => {
     setActivePoster(poster.id);
     setSelectedPoster(poster);
+    setIsFullImageLoading(true);
+  };
+
+  /* =======================================================
+     CLOSE FULL POSTER
+  ======================================================= */
+
+  const closePoster = () => {
+    setSelectedPoster(null);
+    setIsFullImageLoading(false);
   };
 
   /* =======================================================
@@ -397,6 +441,7 @@ export default function PosterArchive() {
 
     setSelectedPoster(poster);
     setActivePoster(poster.id);
+    setIsFullImageLoading(true);
   };
 
   const showNext = () => {
@@ -413,6 +458,7 @@ export default function PosterArchive() {
 
     setSelectedPoster(poster);
     setActivePoster(poster.id);
+    setIsFullImageLoading(true);
   };
 
   /* =======================================================
@@ -438,6 +484,7 @@ export default function PosterArchive() {
     return (
       <motion.div
         key={poster.id}
+
         drag
         dragMomentum={false}
         dragElastic={0.08}
@@ -503,10 +550,13 @@ export default function PosterArchive() {
       >
         <div className="relative">
 
+          {/* Poster thumbnail */}
+
           <img
-            src={poster.src}
+            src={poster.thumbnail}
             alt={poster.title}
             draggable="false"
+
             className="
               block
               w-full
@@ -516,8 +566,12 @@ export default function PosterArchive() {
             "
           />
 
+          {/* Active poster information */}
+
           <AnimatePresence>
+
             {isActive && (
+
               <motion.div
                 initial={{
                   opacity: 0,
@@ -544,19 +598,23 @@ export default function PosterArchive() {
                   top-full
                   pt-2
                   z-[150]
+
                   flex
                   flex-col
                   items-start
                   gap-1
+
                   pointer-events-auto
                 "
               >
+
                 <span
                   className="
                     whitespace-nowrap
                     font-sue
                     text-sm
                     md:text-base
+
                     text-gray-500
                     dark:text-gray-300
                   "
@@ -576,22 +634,31 @@ export default function PosterArchive() {
 
                   className="
                     link-c
+
                     whitespace-nowrap
+
                     font-figtree
                     text-[10px]
                     md:text-xs
+
                     uppercase
                     tracking-[0.16em]
+
                     text-dark
+
                     transition-opacity
                     hover:opacity-60
                   "
                 >
                   View Full Design ↗
                 </button>
+
               </motion.div>
+
             )}
+
           </AnimatePresence>
+
         </div>
       </motion.div>
     );
@@ -602,9 +669,12 @@ export default function PosterArchive() {
       className="
         poster-archive
         normal-c
+
         relative
+
         py-16
         md:py-24
+
         px-4
         md:px-10
 
@@ -670,8 +740,10 @@ export default function PosterArchive() {
           className="
             font-figtree
             font-bold
+
             text-4xl
             md:text-6xl
+
             tracking-tight
           "
         >
@@ -681,9 +753,12 @@ export default function PosterArchive() {
         <p
           className="
             mt-4
+
             font-sue
+
             text-xl
             md:text-2xl
+
             text-gray-500
             dark:text-gray-300
           "
@@ -726,11 +801,13 @@ export default function PosterArchive() {
 
                   className={`
                     relative
+
                     min-w-[165px]
                     md:min-w-[200px]
 
                     px-5
                     md:px-7
+
                     py-5
                     md:py-7
 
@@ -753,9 +830,13 @@ export default function PosterArchive() {
                   <span
                     className="
                       block
+
                       font-figtree
+
                       text-[10px]
+
                       tracking-[0.25em]
+
                       opacity-50
                       mb-2
                     "
@@ -766,8 +847,10 @@ export default function PosterArchive() {
                   <span
                     className="
                       block
+
                       font-figtree
                       font-bold
+
                       text-sm
                       md:text-base
                     "
@@ -776,18 +859,23 @@ export default function PosterArchive() {
                   </span>
 
                   {isActive && (
+
                     <motion.div
                       layoutId="active-category"
 
                       className="
                         absolute
+
                         left-0
                         bottom-0
+
                         h-[3px]
                         w-full
+
                         bg-light
                       "
                     />
+
                   )}
 
                 </button>
@@ -825,9 +913,12 @@ export default function PosterArchive() {
             className="
               flex
               flex-col
+
               md:flex-row
               md:items-end
+
               justify-between
+
               gap-5
               mt-7
             "
@@ -838,9 +929,12 @@ export default function PosterArchive() {
               <p
                 className="
                   font-figtree
+
                   text-xs
+
                   tracking-[0.25em]
                   uppercase
+
                   text-gray-400
                   dark:text-gray-500
                 "
@@ -852,8 +946,10 @@ export default function PosterArchive() {
                 className="
                   font-figtree
                   font-bold
+
                   text-3xl
                   md:text-5xl
+
                   mt-2
                 "
               >
@@ -865,10 +961,14 @@ export default function PosterArchive() {
             <p
               className="
                 max-w-md
+
                 font-sue
+
                 text-lg
                 md:text-xl
+
                 md:text-right
+
                 text-gray-500
                 dark:text-gray-300
               "
@@ -905,10 +1005,13 @@ export default function PosterArchive() {
 
           className="
             relative
+
             max-w-7xl
             mx-auto
+
             mt-8
             md:mt-10
+
             h-[420px]
             md:h-[560px]
           "
@@ -920,15 +1023,18 @@ export default function PosterArchive() {
 
           {activeCategory ===
             "illustrative" && (
+
             <>
 
-              {/* Vengeance Cluster */}
+              {/* Vengeance Trilogy cluster */}
 
               <div
                 className="
                   absolute
+
                   left-[8%]
                   top-[12%]
+
                   w-[48%]
                   h-[56%]
                 "
@@ -937,11 +1043,15 @@ export default function PosterArchive() {
                 <div
                   className="
                     absolute
+
                     left-0
                     -top-8
+
                     font-sue
+
                     text-sm
                     md:text-base
+
                     text-gray-400
                     dark:text-gray-500
                   "
@@ -987,6 +1097,7 @@ export default function PosterArchive() {
               )}
 
             </>
+
           )}
 
           {/* =================================================
@@ -1005,7 +1116,7 @@ export default function PosterArchive() {
                       posterPositions.length
                   ];
 
-                /* Single */
+                /* Single poster */
 
                 if (
                   visiblePosters.length ===
@@ -1025,7 +1136,7 @@ export default function PosterArchive() {
                   };
                 }
 
-                /* Two Posters */
+                /* Two posters */
 
                 if (
                   visiblePosters.length ===
@@ -1070,7 +1181,7 @@ export default function PosterArchive() {
           )}
 
           {/* =================================================
-              FULL PREVIEW
+              FULL DESIGN PREVIEW
           ================================================= */}
 
           <AnimatePresence>
@@ -1093,29 +1204,28 @@ export default function PosterArchive() {
                 className="
                   absolute
                   inset-0
-                  z-[300]
 
-                  flex
-                  items-center
-                  justify-center
+                  z-[300]
 
                   bg-dark
                 "
               >
 
+                {/* Background close area */}
+
                 <div
                   className="absolute inset-0"
-                  onClick={() =>
-                    setSelectedPoster(null)
-                  }
+                  onClick={closePoster}
                 />
+
+                {/* Preview */}
 
                 <motion.div
                   key={selectedPoster.id}
 
                   initial={{
                     opacity: 0,
-                    scale: 0.9,
+                    scale: 0.94,
                   }}
 
                   animate={{
@@ -1125,138 +1235,277 @@ export default function PosterArchive() {
 
                   exit={{
                     opacity: 0,
-                    scale: 0.95,
+                    scale: 0.97,
+                  }}
+
+                  transition={{
+                    duration: 0.28,
+                    ease: "easeOut",
                   }}
 
                   className="
                     relative
                     z-10
+
                     w-full
                     h-full
 
                     flex
-                    items-center
-                    justify-center
+                    flex-col
 
-                    px-12
-                    md:px-24
-                    py-10
+                    px-4
+                    py-4
+
+                    md:px-8
+                    md:py-6
                   "
                 >
 
-                  <img
-                    src={
-                      selectedPoster.src
-                    }
-
-                    alt={
-                      selectedPoster.title
-                    }
-
-                    className="
-                      max-w-full
-                      max-h-full
-                      object-contain
-                      shadow-2xl
-                    "
-                  />
-
-                  {/* Close */}
-
-                  <button
-                    onClick={() =>
-                      setSelectedPoster(null)
-                    }
-
-                    className="
-                      link-c
-                      absolute
-                      top-3
-                      right-4
-
-                      font-sue
-                      text-lg
-                      md:text-xl
-
-                      text-light
-                      opacity-60
-                      hover:opacity-100
-
-                      transition-opacity
-                    "
-                  >
-                    close ×
-                  </button>
-
-                  {/* Poster Info */}
+                  {/* Top bar */}
 
                   <div
                     className="
-                      absolute
-                      bottom-4
-                      left-1/2
-                      -translate-x-1/2
-                      text-center
-                      text-light
+                      shrink-0
+
+                      flex
+                      items-center
+                      justify-between
+
+                      gap-4
+
+                      mb-3
+                      md:mb-5
                     "
                   >
 
-                    <p
+                    <div
                       className="
+                        min-w-0
+                        text-light
+                      "
+                    >
+
+                      <p
+                        className="
+                          font-sue
+
+                          text-xs
+                          md:text-sm
+
+                          opacity-60
+                        "
+                      >
+                        {selectedPoster.year}
+                      </p>
+
+                      <h3
+                        className="
+                          font-figtree
+                          font-bold
+
+                          text-base
+                          md:text-xl
+
+                          truncate
+                        "
+                      >
+                        {selectedPoster.title}
+                      </h3>
+
+                    </div>
+
+                    <button
+                      onClick={closePoster}
+
+                      className="
+                        link-c
+
+                        shrink-0
+
                         font-sue
-                        text-xs
-                        md:text-sm
-                        opacity-60
-                      "
-                    >
-                      {selectedPoster.year}
-                    </p>
 
-                    <h3
-                      className="
-                        font-figtree
-                        font-bold
-                        text-base
+                        text-lg
                         md:text-xl
-                        whitespace-nowrap
-                      "
-                    >
-                      {selectedPoster.title}
-                    </h3>
 
-                    <p
-                      className="
-                        font-figtree
-                        text-[10px]
-                        md:text-xs
-                        opacity-50
-                        mt-1
+                        text-light
+
+                        opacity-60
+                        hover:opacity-100
+
+                        transition-opacity
                       "
                     >
-                      {selectedPoster.category}
-                    </p>
+                      close ×
+                    </button>
 
                   </div>
 
-                  {/* Navigation */}
+                  {/* Image area */}
 
-                  {visiblePosters.length >
-                    1 && (
+                  <div
+                    className="
+                      relative
 
-                    <>
+                      flex-1
+                      min-h-0
+
+                      flex
+                      items-center
+                      justify-center
+
+                      px-8
+
+                      md:px-20
+                    "
+                  >
+
+                    {/* Full image loading state */}
+
+                    <AnimatePresence>
+
+                      {isFullImageLoading && (
+
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                          }}
+
+                          animate={{
+                            opacity: 1,
+                          }}
+
+                          exit={{
+                            opacity: 0,
+                          }}
+
+                          className="
+                            absolute
+                            inset-0
+
+                            z-10
+
+                            flex
+                            flex-col
+
+                            items-center
+                            justify-center
+
+                            pointer-events-none
+                          "
+                        >
+
+                          <motion.div
+                            animate={{
+                              scale: [
+                                1,
+                                1.5,
+                                1,
+                              ],
+
+                              opacity: [
+                                1,
+                                0.45,
+                                1,
+                              ],
+                            }}
+
+                            transition={{
+                              duration: 1.1,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }}
+
+                            className="
+                              w-2.5
+                              h-2.5
+
+                              rounded-full
+
+                              bg-niceorange
+                            "
+                          />
+
+                          <p
+                            className="
+                              mt-4
+
+                              font-sue
+
+                              text-base
+                              md:text-lg
+
+                              text-light
+
+                              opacity-50
+                            "
+                          >
+                            loading full design...
+                          </p>
+
+                        </motion.div>
+
+                      )}
+
+                    </AnimatePresence>
+
+                    {/* Full PNG */}
+
+                    <img
+                      key={selectedPoster.id}
+
+                      src={selectedPoster.full}
+
+                      alt={selectedPoster.title}
+
+                      onLoad={() =>
+                        setIsFullImageLoading(false)
+                      }
+
+                      onError={() =>
+                        setIsFullImageLoading(false)
+                      }
+
+                      className={`
+                        relative
+                        z-20
+
+                        max-w-full
+                        max-h-full
+
+                        object-contain
+
+                        shadow-2xl
+
+                        transition-opacity
+                        duration-300
+
+                        ${
+                          isFullImageLoading
+                            ? "opacity-0"
+                            : "opacity-100"
+                        }
+                      `}
+                    />
+
+                    {/* Previous */}
+
+                    {visiblePosters.length > 1 && (
 
                       <button
-                        onClick={
-                          showPrevious
-                        }
+                        onClick={showPrevious}
 
                         className="
                           link-c
+
                           absolute
-                          left-3
-                          md:left-6
+
+                          left-0
+                          md:left-2
+
                           top-1/2
                           -translate-y-1/2
+
+                          z-30
 
                           px-3
                           py-2
@@ -1278,18 +1527,27 @@ export default function PosterArchive() {
                         ←
                       </button>
 
+                    )}
+
+                    {/* Next */}
+
+                    {visiblePosters.length > 1 && (
+
                       <button
-                        onClick={
-                          showNext
-                        }
+                        onClick={showNext}
 
                         className="
                           link-c
+
                           absolute
-                          right-3
-                          md:right-6
+
+                          right-0
+                          md:right-2
+
                           top-1/2
                           -translate-y-1/2
+
+                          z-30
 
                           px-3
                           py-2
@@ -1311,9 +1569,39 @@ export default function PosterArchive() {
                         →
                       </button>
 
-                    </>
+                    )}
 
-                  )}
+                  </div>
+
+                  {/* Bottom category */}
+
+                  <div
+                    className="
+                      shrink-0
+
+                      mt-3
+                      md:mt-4
+
+                      text-center
+
+                      text-light
+                    "
+                  >
+
+                    <p
+                      className="
+                        font-figtree
+
+                        text-[10px]
+                        md:text-xs
+
+                        opacity-50
+                      "
+                    >
+                      {selectedPoster.category}
+                    </p>
+
+                  </div>
 
                 </motion.div>
 
