@@ -35,7 +35,7 @@ export default function App() {
   const deskRef = useRef(null);
 
   const { isDarkMode } = useTheme();
-  const { isLoading } = usePageLoader();
+  const isLoading = usePageLoader();
 
   // Navbar visibility logic — trigger when table hits top of viewport
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function App() {
   return (
     <Router>
     <LazyMotion features={domAnimation}>
-      {isLoading && <LoadingScreen />}
+      <LoadingScreen isLoading={isLoading} />
 
       <div
         className={`relative custom-cursor-active overflow-x-hidden transition-opacity duration-300 ${

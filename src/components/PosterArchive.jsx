@@ -712,6 +712,8 @@ export default function PosterArchive() {
             text-2xl
             md:text-3xl
             rotate-[-2deg]
+            mb-1
+            text-niceorange
           "
         >
           Things I Made
@@ -742,7 +744,7 @@ export default function PosterArchive() {
             font-bold
 
             text-4xl
-            md:text-6xl
+            md:text-5xl
 
             tracking-tight
           "

@@ -21,10 +21,19 @@ export default function usePageLoader() {
 
         images.map((image) => {
 
+          /*
+           * Image is already loaded
+           */
+
           if (image.complete) {
             return Promise.resolve();
           }
 
+
+          /*
+           * Wait until image loads
+           * or fails to load
+           */
 
           return new Promise(
             (resolve) => {
@@ -61,7 +70,7 @@ export default function usePageLoader() {
       try {
 
         /*
-         * Wait for browser load
+         * Wait for browser document
          */
 
         if (
@@ -94,15 +103,17 @@ export default function usePageLoader() {
 
 
         /*
-         * Wait for all initially rendered images
+         * Wait for all images that
+         * are currently rendered
          */
 
         await waitForImages();
 
 
         /*
-         * Small buffer so the transition
-         * feels intentional
+         * Small buffer so loading
+         * animation does not disappear
+         * abruptly
          */
 
         await new Promise(
@@ -121,6 +132,7 @@ export default function usePageLoader() {
           "Page loading error:",
           error
         );
+
 
         if (mounted) {
           setIsLoading(false);
