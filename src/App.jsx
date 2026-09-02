@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, Suspense, lazy } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate, } from "react-router-dom";
 import { motion, LazyMotion, domAnimation } from "framer-motion";
 import DeskTable from "./components/DeskTable";
 import StickyNotesSection from "./components/StickyNotesSection";
@@ -137,6 +137,7 @@ export default function App() {
 
                     {/* Main Content (scaled slightly for focus) */}
                     <div className="scale-[0.95] origin-top">
+                      <section id = "projects">
                       {/* Projects Section */}
                       <motion.div
                         initial="hidden"
@@ -198,8 +199,9 @@ export default function App() {
                           </motion.div>
                         ))}
                       </motion.div>
+                      </section>
 
-                      <PosterArchive />
+                      <section id="designs"><PosterArchive /></section>
 
                       {/* Divider */}
                       <div className="w-screen h-[1px] bg-gray-300 border-1 border-gray-200 mb-6"></div>
@@ -287,6 +289,15 @@ export default function App() {
               <Route path="/digibridge" element={<DigiBridgePage />} />
               <Route path="/aquavision" element={<AquaVision />} />
               <Route path="/verbofix" element={<VerboFixPage />} />
+              <Route
+                path="/designs"
+                element={
+                  <Navigate
+                    to="/#designs"
+                    replace
+                  />
+                }
+              />
             </Routes>
           </Suspense>
         </div>
