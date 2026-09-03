@@ -19,6 +19,7 @@ import spiderverseFull from "../assets/img/posters/spiderverse.png";
 
 import mrMoraleFull from "../assets/img/posters/mr-morale.png";
 import VettelPosterFull from "../assets/img/posters/vettel.png";
+import gorillazFull from "../assets/img/posters/gorillaz.png"
 
 /* =========================================================
    THUMBNAILS
@@ -38,6 +39,7 @@ import spiderverseThumb from "../assets/img/posters/thumbnails/spiderverse.webp"
 
 import mrMoraleThumb from "../assets/img/posters/thumbnails/mr-morale.webp";
 import VettelPosterThumb from "../assets/img/posters/thumbnails/vettel.webp";
+import gorillazThumb from "../assets/img/posters/thumbnails/gorillaz.webp"
 
 /* =========================================================
    ARCHIVE DATA
@@ -200,6 +202,14 @@ const archive = [
         thumbnail: spiderverseThumb,
         full: spiderverseFull,
         title: "Into the Spider-Verse",
+        year: "2026",
+        category: "Collage",
+      },
+      {
+        id: "gorillaz",
+        thumbnail: gorillazThumb,
+        full: gorillazFull,
+        title: "Gorillaz - The Mountain",
         year: "2026",
         category: "Collage",
       },
