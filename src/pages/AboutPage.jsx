@@ -28,6 +28,7 @@ import UiUxDark from '../assets/img/ui-ux-dark.svg';
 import GraphicDesignDark from '../assets/img/graphic-design-dark.svg';
 import { useTheme } from '../context/ThemeContext';
 import CognizantLogo from "../assets/img/cognizant-logo.png";
+import AffinityLogo from "../assets/img/affinity.jfif"
 
 const experiences = [
   {
@@ -60,8 +61,9 @@ const skills = [
   { src: JavascriptIcon, label: "JavaScript" },
   { src: PythonIcon, label: "Python" },
   { src: AzureLogo, label: "Azure" },
+  { src: AffinityLogo, label: "Affinity" },
   { src: FigmaIcon, label: "Figma" },
-  { src: TailwindIcon, label: "Tailwind CSS" },
+  { src: TailwindIcon, label: "Tailwind" },
   { src: ThreeIcon, label: "Three.js" },
   { src: PlaycanvasIcon, label: "PlayCanvas" },
   { src: IllustratorIcon, label: "Illustrator" },
