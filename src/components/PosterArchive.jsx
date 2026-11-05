@@ -2,26 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 /* =========================================================
-   FULL DESIGNS
-   Original PNGs — only used in the full preview
-========================================================= */
-
-import messiFull from "../assets/img/posters/messi.png";
-
-import mrVengeanceFull from "../assets/img/posters/mr-vengeance.png";
-import oldboyFull from "../assets/img/posters/oldboy.png";
-import ladyVengeanceFull from "../assets/img/posters/lady-vengeance.png";
-import heIsTheLightFull from "../assets/img/posters/he-is-the-light.png";
-
-import boysDontCryFull from "../assets/img/posters/boys-dont-cry.png";
-
-import spiderverseFull from "../assets/img/posters/spiderverse.png";
-
-import mrMoraleFull from "../assets/img/posters/mr-morale.png";
-import VettelPosterFull from "../assets/img/posters/vettel.png";
-import gorillazFull from "../assets/img/posters/gorillaz.png"
-
-/* =========================================================
    THUMBNAILS
    Lightweight WebPs — used in draggable archive
 ========================================================= */
@@ -40,207 +20,158 @@ import spiderverseThumb from "../assets/img/posters/thumbnails/spiderverse.webp"
 import mrMoraleThumb from "../assets/img/posters/thumbnails/mr-morale.webp";
 import VettelPosterThumb from "../assets/img/posters/thumbnails/vettel.webp";
 import gorillazThumb from "../assets/img/posters/thumbnails/gorillaz.webp"
+import dorothyThumb from "../assets/img/posters/thumbnails/dorothy.webp"
+import nocThumb from "../assets/img/posters/thumbnails/no-other-choice.webp"
 
 /* =========================================================
    ARCHIVE DATA
+   Categories are based on the visual approach / construction.
 ========================================================= */
 
 const archive = [
   {
-    id: "mixed-media",
-    title: "Mixed Media Design",
-    shortTitle: "Mixed Media",
+    id: "illustration",
+    title: "Illustration",
+    shortTitle: "Illustration",
     number: "01",
     description:
-      "Photography, typography, textures and visual fragments stitched together.",
+      "Original character artwork, stylised forms and illustrated visual worlds.",
 
     items: [
       {
-        id: "messi",
-        thumbnail: messiThumb,
-        full: messiFull,
-        title: "Messi",
+        id: "dorothy",
+        thumbnail: dorothyThumb,
+        full: dorothyThumb,
+        title: "Dorothy",
         year: "2026",
-        category: "Mixed Media Design",
+        category: "Illustration",
       },
-    ],
-  },
-
-  {
-    id: "illustrative",
-    title: "Illustrative Design",
-    shortTitle: "Illustrative",
-    number: "02",
-    description:
-      "Geometric forms, stylised characters and illustrated visual worlds.",
-
-    groups: [
       {
-        id: "vengeance-trilogy",
-        title: "The Vengeance Trilogy",
-        subtitle: "Park Chan-wook",
-
-        items: [
-          {
-            id: "mr-vengeance",
-            thumbnail: mrVengeanceThumb,
-            full: mrVengeanceFull,
-            title: "Sympathy for Mr. Vengeance",
-            year: "2026",
-            category: "Illustrative Design",
-            collection: "The Vengeance Trilogy",
-
-            clusterPosition: {
-              x: "2%",
-              y: "22%",
-              rotate: -7,
-              width: "34%",
-              zIndex: 1,
-
-              mobile: {
-                x: "2%",
-                y: "22%",
-                width: "42%",
-              },
-            },
-          },
-
-          {
-            id: "oldboy",
-            thumbnail: oldboyThumb,
-            full: oldboyFull,
-            title: "Oldboy",
-            year: "2026",
-            category: "Illustrative Design",
-            collection: "The Vengeance Trilogy",
-
-            clusterPosition: {
-              x: "29%",
-              y: "3%",
-              rotate: 3,
-              width: "34%",
-              zIndex: 3,
-
-              mobile: {
-                x: "29%",
-                y: "3%",
-                width: "42%",
-              },
-            },
-          },
-
-          {
-            id: "lady-vengeance",
-            thumbnail: ladyVengeanceThumb,
-            full: ladyVengeanceFull,
-            title: "Lady Vengeance",
-            year: "2026",
-            category: "Illustrative Design",
-            collection: "The Vengeance Trilogy",
-
-            clusterPosition: {
-              x: "56%",
-              y: "22%",
-              rotate: 8,
-              width: "34%",
-              zIndex: 2,
-
-              mobile: {
-                x: "56%",
-                y: "22%",
-                width: "42%",
-              },
-            },
-          },
-        ],
+        id: "mr-vengeance",
+        thumbnail: mrVengeanceThumb,
+        full: mrVengeanceThumb,
+        title: "Sympathy for Mr. Vengeance",
+        year: "2026",
+        category: "Illustration",
+        collection: "The Vengeance Trilogy",
       },
-    ],
-
-    items: [
+      {
+        id: "oldboy",
+        thumbnail: oldboyThumb,
+        full: oldboyThumb,
+        title: "Oldboy",
+        year: "2026",
+        category: "Illustration",
+        collection: "The Vengeance Trilogy",
+      },
+      {
+        id: "lady-vengeance",
+        thumbnail: ladyVengeanceThumb,
+        full: ladyVengeanceThumb,
+        title: "Lady Vengeance",
+        year: "2026",
+        category: "Illustration",
+        collection: "The Vengeance Trilogy",
+      },
       {
         id: "he-is-the-light",
         thumbnail: heIsTheLightThumb,
-        full: heIsTheLightFull,
+        full: heIsTheLightThumb,
         title: "He Is the Light",
         year: "2026",
-        category: "Illustrative Design",
+        category: "Illustration",
       },
     ],
   },
 
   {
-    id: "moodboard",
-    title: "Moodboard Design",
-    shortTitle: "Moodboard",
-    number: "03",
+    id: "image-composition",
+    title: "Image Composition",
+    shortTitle: "Image Composition",
+    number: "02",
     description:
-      "Visual references, music, fashion and atmosphere brought into one composition.",
-
-    items: [
-      {
-        id: "boys-dont-cry",
-        thumbnail: boysDontCryThumb,
-        full: boysDontCryFull,
-        title: "Boys Don't Cry / Blonde",
-        year: "2026",
-        category: "Moodboard Design",
-      },
-    ],
-  },
-
-  {
-    id: "collage",
-    title: "Collage",
-    shortTitle: "Collage",
-    number: "04",
-    description:
-      "Fragments from different worlds reconstructed into one visual composition.",
-
-    items: [
-      {
-        id: "spiderverse",
-        thumbnail: spiderverseThumb,
-        full: spiderverseFull,
-        title: "Into the Spider-Verse",
-        year: "2026",
-        category: "Collage",
-      },
-      {
-        id: "gorillaz",
-        thumbnail: gorillazThumb,
-        full: gorillazFull,
-        title: "Gorillaz - The Mountain",
-        year: "2026",
-        category: "Collage",
-      },
-    ],
-  },
-
-  {
-    id: "posters",
-    title: "Posters",
-    shortTitle: "Posters",
-    number: "05",
-    description:
-      "Standalone visual explorations designed as individual poster pieces.",
+      "Photographs, film imagery and visual fragments reworked into bold graphic compositions.",
 
     items: [
       {
         id: "mr-morale",
         thumbnail: mrMoraleThumb,
-        full: mrMoraleFull,
+        full: mrMoraleThumb,
         title: "Mr. Morale",
         year: "2026",
-        category: "Poster Design",
+        category: "Image Composition",
       },
+      {
+        id: "spiderverse",
+        thumbnail: spiderverseThumb,
+        full: spiderverseThumb,
+        title: "Into the Spider-Verse",
+        year: "2026",
+        category: "Image Composition",
+      },
+      {
+        id: "gorillaz",
+        thumbnail: gorillazThumb,
+        full: gorillazThumb,
+        title: "Gorillaz - The Mountain",
+        year: "2026",
+        category: "Image Composition",
+      },
+    ],
+  },
 
+  {
+    id: "typography-editorial",
+    title: "Typography & Editorial",
+    shortTitle: "Typography & Editorial",
+    number: "03",
+    description:
+      "Type-led layouts, editorial thinking and carefully directed imagery.",
+
+    items: [
+      {
+        id: "boys-dont-cry",
+        thumbnail: boysDontCryThumb,
+        full: boysDontCryThumb,
+        title: "Boys Don't Cry / Blonde",
+        year: "2026",
+        category: "Typography & Editorial",
+      },
       {
         id: "vettel",
         thumbnail: VettelPosterThumb,
-        full: VettelPosterFull,
+        full: VettelPosterThumb,
         title: "Sebastian Vettel",
         year: "2026",
-        category: "Poster Design",
+        category: "Typography & Editorial",
+      },
+    ],
+  },
+
+  {
+    id: "material-experiments",
+    title: "Material Experiments",
+    shortTitle: "Material Experiments",
+    number: "04",
+    description:
+      "Tactile surfaces, physical mark-making and material-led visual experiments.",
+
+    items: [
+      {
+        id: "no-other-choice",
+        thumbnail: nocThumb,
+        full: nocThumb,
+        title: "No Other Choice",
+        year: "2026",
+        category: "Material Experiments",
+      },
+      {
+        id: "messi",
+        thumbnail: messiThumb,
+        full: messiThumb,
+        title: "Messi",
+        year: "2026",
+        category: "Material Experiments",
       },
     ],
   },
@@ -255,35 +186,36 @@ const posterPositions = [
     x: "9%",
     y: "8%",
     rotate: -7,
-    width: "26%",
+    width: "22%",
+    mobile: { x: "3%", y: "8%", width: "34%" },
   },
-
   {
     x: "37%",
     y: "5%",
     rotate: 5,
-    width: "25%",
+    width: "22%",
+    mobile: { x: "31%", y: "5%", width: "34%" },
   },
-
   {
     x: "63%",
     y: "12%",
     rotate: -4,
-    width: "25%",
+    width: "22%",
+    mobile: { x: "59%", y: "12%", width: "34%" },
   },
-
   {
     x: "18%",
     y: "36%",
     rotate: 4,
-    width: "26%",
+    width: "22%",
+    mobile: { x: "10%", y: "39%", width: "34%" },
   },
-
   {
     x: "52%",
     y: "34%",
     rotate: -6,
-    width: "27%",
+    width: "23%",
+    mobile: { x: "49%", y: "37%", width: "34%" },
   },
 ];
 
@@ -293,7 +225,7 @@ const posterPositions = [
 
 export default function PosterArchive() {
   const [activeCategory, setActiveCategory] =
-    useState("mixed-media");
+    useState("illustration");
 
   const [activePoster, setActivePoster] =
     useState(null);
@@ -370,6 +302,16 @@ export default function PosterArchive() {
       ...groupedPosters,
     ];
   }, [currentCategory]);
+
+  const collectionPosters = useMemo(
+    () => visiblePosters.filter((poster) => poster.collection),
+    [visiblePosters]
+  );
+
+  const standalonePosters = useMemo(
+    () => visiblePosters.filter((poster) => !poster.collection),
+    [visiblePosters]
+  );
 
   /* =======================================================
      ESC CLOSE
@@ -1028,173 +970,173 @@ export default function PosterArchive() {
             opacity: 0,
           }}
 
-          className="
+          className={`
             relative
-
             max-w-7xl
             mx-auto
-
             mt-8
             md:mt-6
-
-            h-[420px]
-            md:h-[430px]
-          "
+            h-[430px]
+            md:h-[560px]
+            ${isMobile && activeCategory === "illustration" ? "h-[570px]" : ""}
+          `}
         >
 
           {/* =================================================
-              ILLUSTRATIVE DESIGN
+              CATEGORY POSTERS
           ================================================= */}
 
-          {activeCategory ===
-            "illustrative" && (
-
+          {activeCategory === "illustration" ? (
             <>
+              {/* Two featured illustrated posters */}
+              {standalonePosters.map((poster, index) => {
+                const position =
+                  poster.id === "dorothy"
+                    ? {
+                        x: "19%",
+                        y: "3%",
+                        rotate: -5,
+                        width: "19%",
+                        zIndex: 12,
+                        mobile: {
+                          x: "7%",
+                          y: "3%",
+                          width: "34%",
+                        },
+                      }
+                    : {
+                        x: "61%",
+                        y: "5%",
+                        rotate: 4,
+                        width: "19%",
+                        zIndex: 11,
+                        mobile: {
+                          x: "59%",
+                          y: "3%",
+                          width: "34%",
+                        },
+                      };
 
+                return renderPoster(poster, position, index);
+              })}
+
+              {/* The Vengeance Trilogy — tightly grouped, with its title underneath */}
               <div
-                className="
+                className={`
                   absolute
-
-                  left-[8%]
-                  top-[12%]
-
-                  w-[48%]
-                  h-[56%]
-                "
+                  ${isMobile
+                    ? "left-[5%] top-[43%] w-[90%] h-[230px]"
+                    : "left-[31%] top-[51%] w-[38%] h-[255px]"
+                  }
+                `}
               >
-
                 <div
+                  className={`
+                    absolute inset-x-0 top-0
+                    ${isMobile ? "h-[185px]" : "h-[215px]"}
+                  `}
+                >
+                  {collectionPosters.map((poster, index) => {
+                    const collectionPositions = [
+                      {
+                        x: "7%",
+                        y: "5%",
+                        rotate: -5,
+                        width: "22%",
+                        zIndex: 12,
+                        mobile: { x: "3%", y: "5%", width: "27%" },
+                      },
+                      {
+                        x: "36%",
+                        y: "0%",
+                        rotate: 1,
+                        width: "22%",
+                        zIndex: 14,
+                        mobile: { x: "36.5%", y: "0%", width: "27%" },
+                      },
+                      {
+                        x: "65%",
+                        y: "6%",
+                        rotate: 5,
+                        width: "22%",
+                        zIndex: 13,
+                        mobile: { x: "70%", y: "6%", width: "27%" },
+                      },
+                    ];
+
+                    return renderPoster(
+                      poster,
+                      collectionPositions[index],
+                      index + standalonePosters.length
+                    );
+                  })}
+                </div>
+
+                <p
                   className="
                     absolute
-
-                    left-0
-                    -top-8
-
-                    font-sue
-
-                    text-sm
-                    md:text-base
-
-                    text-gray-400
-                    dark:text-gray-500
+                    inset-x-0
+                    bottom-0
+                    text-center
+                    font-figtree
+                    text-[9px]
+                    md:text-[11px]
+                    uppercase
+                    tracking-[0.24em]
+                    text-gray-500
+                    dark:text-gray-300
                   "
                 >
                   The Vengeance Trilogy
-                </div>
-
-                {currentCategory.groups[0].items.map(
-                  (poster, index) =>
-                    renderPoster(
-                      poster,
-                      poster.clusterPosition,
-                      index
-                    )
-                )}
-
+                </p>
               </div>
-
-              {currentCategory.items.map(
-                (poster, index) => {
-
-                  const position = {
-                    x: "70%",
-                    y: "16%",
-                    rotate: -5,
-                    width: "23%",
-
-                    mobile: {
-                      x: "58%",
-                      y: "20%",
-                      width: "32%",
-                    },
-                  };
-
-                  return renderPoster(
-                    poster,
-                    position,
-                    index + 3
-                  );
-                }
-              )}
-
             </>
+          ) : (
+            visiblePosters.map((poster, index) => {
+              let position =
+                posterPositions[index % posterPositions.length];
 
-          )}
-
-          {/* =================================================
-              OTHER CATEGORIES
-          ================================================= */}
-
-          {activeCategory !==
-            "illustrative" && (
-
-            visiblePosters.map(
-              (poster, index) => {
-
-                let position =
-                  posterPositions[
-                    index %
-                      posterPositions.length
-                  ];
-
-                if (
-                  visiblePosters.length ===
-                  1
-                ) {
-                  position = {
-                    x: "36%",
+              if (visiblePosters.length === 1) {
+                position = {
+                  x: "36%",
+                  y: "6%",
+                  rotate: -4,
+                  width: "24%",
+                  mobile: {
+                    x: "28%",
                     y: "6%",
-                    rotate: -4,
-                    width: "28%",
-
-                    mobile: {
-                      x: "28%",
-                      y: "6%",
-                      width: "44%",
-                    },
-                  };
-                }
-
-                if (
-                  visiblePosters.length ===
-                  2
-                ) {
-                  position =
-                    index === 0
-                      ? {
-                          x: "22%",
+                    width: "38%",
+                  },
+                };
+              } else if (visiblePosters.length === 2) {
+                position =
+                  index === 0
+                    ? {
+                        x: "25%",
+                        y: "8%",
+                        rotate: -5,
+                        width: "23%",
+                        mobile: {
+                          x: "10%",
                           y: "8%",
-                          rotate: -6,
-                          width: "28%",
-
-                          mobile: {
-                            x: "10%",
-                            y: "8%",
-                            width: "42%",
-                          },
-                        }
-                      : {
-                          x: "51%",
-                          y: "16%",
-                          rotate: 6,
-                          width: "28%",
-
-                          mobile: {
-                            x: "49%",
-                            y: "16%",
-                            width: "42%",
-                          },
-                        };
-                }
-
-                return renderPoster(
-                  poster,
-                  position,
-                  index
-                );
+                          width: "36%",
+                        },
+                      }
+                    : {
+                        x: "53%",
+                        y: "14%",
+                        rotate: 5,
+                        width: "23%",
+                        mobile: {
+                          x: "53%",
+                          y: "14%",
+                          width: "36%",
+                        },
+                      };
               }
-            )
 
+              return renderPoster(poster, position, index);
+            })
           )}
 
           {/* =================================================
